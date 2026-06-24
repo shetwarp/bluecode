@@ -1,5 +1,11 @@
 
 
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
@@ -13,7 +19,6 @@
 body,html{font-family:'Vazirmatn',sans-serif;direction:rtl;background:var(--bg);color:var(--text);min-height:100vh}
 .page{display:none;min-height:100vh;flex-direction:column}
 .page.active{display:flex}
-
 .nav{display:flex;justify-content:space-between;align-items:center;padding:14px 28px;background:rgba(4,13,26,0.97);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:50}
 .logo{display:flex;align-items:center;gap:8px;cursor:pointer}
 .logo-icon{width:32px;height:32px;background:#0055AA;border-radius:7px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:#fff}
@@ -29,7 +34,6 @@ body,html{font-family:'Vazirmatn',sans-serif;direction:rtl;background:var(--bg);
 .btn-outline-sm:hover{background:rgba(0,168,255,0.08)}
 .btn-primary-sm{background:var(--blue2);color:#fff}
 .btn-primary-sm:hover{background:var(--blue)}
-
 /* ── AUTH PAGES ── */
 .auth-wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 20px;background:var(--bg)}
 .auth-card{background:var(--bg2);border:1px solid var(--border2);border-radius:16px;padding:36px 32px;width:100%;max-width:420px}
@@ -64,7 +68,6 @@ body,html{font-family:'Vazirmatn',sans-serif;direction:rtl;background:var(--bg);
 .alert{padding:10px 14px;border-radius:8px;font-size:12px;margin-bottom:14px}
 .alert-err{background:rgba(255,95,87,0.1);border:1px solid rgba(255,95,87,0.3);color:#FF8A84}
 .alert-ok{background:rgba(40,202,65,0.1);border:1px solid rgba(40,202,65,0.3);color:#4AE060}
-
 /* ── COURSES PAGE ── */
 .courses-page{flex:1;background:var(--bg)}
 .search-bar-wrap{background:var(--bg2);border-bottom:1px solid var(--border);padding:20px 28px}
@@ -94,7 +97,6 @@ body,html{font-family:'Vazirmatn',sans-serif;direction:rtl;background:var(--bg);
 .price-tag{font-size:12px;font-weight:700;color:var(--gold)}
 .price-free{font-size:12px;font-weight:700;color:#4AE060}
 .no-results{text-align:center;padding:60px 20px;color:var(--text3)}
-
 /* ── COURSE DETAIL PAGE ── */
 .course-detail{flex:1;background:var(--bg)}
 .detail-hero{background:var(--bg2);border-bottom:1px solid var(--border);padding:32px 28px}
@@ -131,7 +133,6 @@ body,html{font-family:'Vazirmatn',sans-serif;direction:rtl;background:var(--bg);
 .progress-label{display:flex;justify-content:space-between;font-size:12px;color:var(--text3);margin-bottom:8px}
 .progress-bar{height:6px;background:var(--bg3);border-radius:100px;overflow:hidden}
 .progress-fill{height:100%;background:var(--blue2);border-radius:100px;transition:width .5s}
-
 /* ── CERTIFICATE ── */
 .cert-page{flex:1;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:32px}
 .cert-wrap{background:var(--bg2);border:1px solid var(--border3);border-radius:20px;padding:40px;max-width:640px;width:100%;text-align:center}
@@ -154,7 +155,6 @@ body,html{font-family:'Vazirmatn',sans-serif;direction:rtl;background:var(--bg);
 .cert-btn-outline:hover{border-color:var(--blue);color:var(--blue)}
 .cert-id{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text4);margin-top:12px}
 .cert-stars{font-size:22px;letter-spacing:2px;margin:8px 0;color:var(--gold)}
-
 /* ── DASHBOARD ── */
 .dashboard{flex:1;background:var(--bg)}
 .dash-inner{max-width:900px;margin:0 auto;padding:28px}
@@ -178,185 +178,303 @@ body,html{font-family:'Vazirmatn',sans-serif;direction:rtl;background:var(--bg);
 .enrolled-status{font-size:11px;font-weight:700;padding:4px 10px;border-radius:100px}
 .status-done{background:rgba(40,202,65,0.12);color:#4AE060;border:1px solid rgba(40,202,65,0.25)}
 .status-prog{background:rgba(0,168,255,0.1);color:var(--blue);border:1px solid var(--border2)}
-
 .toast{display:none;position:fixed;bottom:20px;right:20px;background:var(--bg3);border:1px solid var(--border2);border-radius:10px;padding:12px 18px;font-size:13px;color:var(--text);z-index:999;direction:rtl;font-family:'Vazirmatn',sans-serif}
 .toast.show{display:block;animation:slideUp .3s ease}
 @keyframes slideUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-
 /* =========================
    MOBILE RESPONSIVE
 ========================= */
-
 @media (max-width: 992px){
-
   .courses-grid{
     grid-template-columns:repeat(2,1fr);
     padding:20px;
   }
-
   .detail-hero-inner{
     grid-template-columns:1fr;
   }
-
   .detail-sidebar{
     width:100%;
   }
-
   .dash-grid{
     grid-template-columns:1fr;
   }
 }
-
 @media (max-width: 768px){
-
   .nav{
     padding:12px 16px;
     flex-wrap:wrap;
     gap:12px;
   }
-
   .nav-links{
     width:100%;
     justify-content:center;
     flex-wrap:wrap;
     gap:12px;
   }
-
   .nav-right{
     width:100%;
     justify-content:center;
   }
-
   .logo-text{
     font-size:16px;
   }
-
   .search-bar-wrap{
     padding:16px;
   }
-
   .search-row{
     flex-direction:column;
     align-items:stretch;
   }
-
   .filter-select{
     width:100%;
   }
-
   .courses-grid{
     grid-template-columns:1fr;
     padding:16px;
   }
-
   .course-title{
     font-size:14px;
   }
-
   .detail-hero{
     padding:20px 16px;
   }
-
   .detail-title{
     font-size:22px;
     line-height:1.5;
   }
-
   .detail-content{
     padding:16px;
   }
-
   .syllabus-item{
     padding:12px;
   }
-
   .cert-wrap{
     padding:24px 16px;
   }
-
   .cert-recipient{
     font-size:24px;
   }
-
   .cert-footer{
     grid-template-columns:1fr;
     gap:12px;
   }
-
   .form-row{
     grid-template-columns:1fr;
   }
-
   .oauth-row{
     grid-template-columns:1fr;
   }
-
   .plan-select{
     grid-template-columns:1fr;
   }
-
   .dash-inner{
     padding:16px;
   }
-
   .enrolled-item{
     flex-direction:column;
     align-items:flex-start;
   }
-
   .enrolled-status{
     align-self:flex-end;
   }
 }
-
 @media (max-width: 480px){
-
   .auth-card{
     padding:24px 16px;
   }
-
   .course-footer{
     flex-direction:column;
     gap:8px;
     align-items:flex-start;
   }
-
   .detail-title{
     font-size:18px;
   }
-
   .detail-meta{
     gap:10px;
   }
-
   .detail-price,
   .detail-price-free{
     font-size:24px;
   }
-
   .cert-actions{
     flex-direction:column;
   }
-
   .cert-btn{
     width:100%;
   }
-
   .btn-sm,
   .btn-outline-sm{
     width:100%;
   }
-
   .toast{
     right:10px;
     left:10px;
     width:auto;
   }
 }
+/* ======================
+   MOBILE FIXES
+====================== */
+@media (max-width: 768px){
+  body{
+    overflow-x:hidden;
+  }
+  .nav{
+    flex-direction:column;
+    align-items:center;
+  }
+  .logo{
+    width:100%;
+    justify-content:center;
+  }
+  .nav-links{
+    width:100%;
+    justify-content:center;
+  }
+  .nav-right{
+    width:100%;
+    display:flex;
+    justify-content:center;
+  }
+  .search-row{
+    flex-direction:column;
+  }
+  .search-box,
+  .filter-select{
+    width:100%;
+  }
+  .detail-meta{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:8px;
+  }
+  .course-meta{
+    flex-wrap:wrap;
+  }
+  .course-footer{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:10px;
+  }
+  .detail-sidebar{
+    width:100%;
+  }
+  .detail-hero-inner{
+    display:flex;
+    flex-direction:column;
+  }
+  .detail-title{
+    font-size:20px;
+  }
+  .detail-desc{
+    font-size:13px;
+  }
+  .syllabus-item{
+    flex-wrap:wrap;
+  }
+  .lesson-title{
+    width:100%;
+    margin-top:5px;
+  }
+  .cert-footer{
+    grid-template-columns:1fr;
+  }
+  .dash-grid{
+    grid-template-columns:1fr;
+  }
+  .enrolled-item{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+  .enrolled-status{
+    align-self:flex-start;
+  }
+  .cert-actions{
+    flex-direction:column;
+  }
+  .cert-btn{
+    width:100%;
+  }
+}
+/* گوشی های خیلی کوچک */
+@media (max-width: 480px){
+  .courses-grid{
+    padding:12px;
+  }
+  .course-card{
+    width:100%;
+  }
+  .auth-card{
+    padding:20px 14px;
+  }
+  .detail-title{
+    font-size:18px;
+  }
+  .cert-recipient{
+    font-size:20px;
+  }
+  .dash-header h2{
+    font-size:18px;
+  }
+  .dash-stat-num{
+    font-size:22px;
+  }
+  .btn-sm,
+  .btn-outline-sm{
+    width:100%;
+  }
+  .toast{
+    left:10px;
+    right:10px;
+    width:auto;
+  }
+}
+.video-layout{
+  display:grid;
+  grid-template-columns:2fr 1fr;
+  gap:20px;
+}
+.video-frame{
+  background:var(--bg2);
+  border:1px solid var(--border);
+  border-radius:12px;
+  overflow:hidden;
+}
+.video-frame iframe{
+  width:100%;
+  height:500px;
+  border:none;
+}
+.video-sidebar{
+  background:var(--bg2);
+  border:1px solid var(--border);
+  border-radius:12px;
+  overflow:hidden;
+}
+.video-lesson{
+  padding:14px;
+  border-bottom:1px solid var(--border);
+  cursor:pointer;
+  transition:.2s;
+}
+.video-lesson:hover{
+  background:rgba(0,168,255,.08);
+}
+.video-lesson.active{
+  background:rgba(0,168,255,.12);
+  color:var(--blue);
+}
+@media(max-width:768px){
+  .video-layout{
+    grid-template-columns:1fr;
+  }
+  .video-frame iframe{
+    height:250px;
+  }
+}
 </style>
-
 <div id="toast" class="toast"></div>
-
 <!-- NAV -->
 <nav class="nav" id="main-nav">
   <div class="logo" onclick="goTo('courses')">
@@ -438,7 +556,6 @@ body,html{font-family:'Vazirmatn',sans-serif;direction:rtl;background:var(--bg);
             <p>دوره‌های رایگان</p>
             <div class="plan-price">۰ تومان</div>
           </div>
-          
         </div>
       </div>
       <button class="form-submit" onclick="doRegister()">ساخت حساب</button>
@@ -488,6 +605,13 @@ body,html{font-family:'Vazirmatn',sans-serif;direction:rtl;background:var(--bg);
   <div class="course-detail" id="detail-content"></div>
 </div>
 
+<!-- ══ PAGE: VIDEO PLAYER ══ -->
+<div id="page-player" class="page">
+  <div class="course-detail">
+    <div class="detail-content" id="video-player-content"></div>
+  </div>
+</div>
+
 <!-- ══ PAGE: DASHBOARD ══ -->
 <div id="page-dashboard" class="page">
   <div class="dashboard" id="dashboard-content"></div>
@@ -499,17 +623,242 @@ body,html{font-family:'Vazirmatn',sans-serif;direction:rtl;background:var(--bg);
 </div>
 
 <script>
+// =====================================================
+// ==================== داده‌های دوره‌ها ====================
+// =====================================================
+// ⚠️ برای تغییر سرفصل هر دوره، فقط آرایهٔ syllabus رو ویرایش کن
+// هر دوره سرفصل جداگانه و قابل ویرایش داره
+// =====================================================
+
 const COURSES = [
-  {id:1,title:'پایتون از صفر تا استخدام',icon:'🐍',lang:'Python',cat:'backend',lessons:64,hours:18,rating:4.9,students:3240,level:'مقدماتی تا پیشرفته',free:true,price:0,desc:'کامل‌ترین دوره پایتون فارسی — از متغیر تا ساخت API واقعی با FastAPI.',topics:['متغیرها و انواع داده','توابع و ماژول‌ها','OOP','کار با فایل','FastAPI','پروژه نهایی']},
-  {id:2,title:'ری‌اکت جی‌اس پیشرفته',icon:'⚛️',lang:'React',cat:'frontend',lessons:48,hours:14,rating:4.8,students:2100,level:'متوسط',free:false,price:189000,desc:'از hooks پیشرفته تا بهینه‌سازی و تست — برای توسعه‌دهندگان جدی.',topics:['useState / useEffect','Context API','React Query','Testing','Performance']},
-  {id:3,title:'برنامه‌نویسی با Go',icon:'🐹',lang:'Go',cat:'backend',lessons:36,hours:11,rating:4.7,students:980,level:'متوسط تا پیشرفته',free:false,price:149000,desc:'زبان Go را از پایه یاد بگیر و سرویس‌های سریع و مقیاس‌پذیر بساز.',topics:['Goroutines','Channels','HTTP Server','GORM','Docker']},
-  {id:4,title:'فلاتر — اپ iOS و Android',icon:'📱',lang:'Flutter',cat:'mobile',lessons:52,hours:16,rating:4.8,students:1560,level:'مقدماتی',free:false,price:229000,desc:'یک کدبیس، دو پلتفرم. اپ واقعی بساز و روی استور منتشر کن.',topics:['Widget tree','State management','Firebase','Animations','Publish']},
-  {id:5,title:'یادگیری ماشین با Python',icon:'🤖',lang:'Python',cat:'data',lessons:70,hours:22,rating:4.9,students:4200,level:'متوسط',free:false,price:299000,desc:'scikit-learn، Pandas، و PyTorch — از مفاهیم تا مدل‌های واقعی.',topics:['NumPy / Pandas','scikit-learn','Neural Networks','PyTorch','Deployment']},
-  {id:6,title:'HTML & CSS مقدماتی',icon:'🌐',lang:'HTML/CSS',cat:'frontend',lessons:28,hours:8,rating:4.6,students:5800,level:'مقدماتی',free:true,price:0,desc:'صفر تا ساخت وب‌سایت واکنش‌گرا — کاملاً رایگان برای همه.',topics:['HTML5','CSS3','Flexbox','Grid','Responsive']},
-  {id:7,title:'Docker و Kubernetes',icon:'🐳',lang:'DevOps',cat:'devops',lessons:40,hours:13,rating:4.7,students:730,level:'پیشرفته',free:false,price:179000,desc:'containerization کامل — از dockerfile تا orchestration در کلاستر.',topics:['Docker','docker-compose','Kubernetes','Helm','CI/CD']},
-  {id:8,title:'Node.js و Express',icon:'🟢',lang:'Node.js',cat:'backend',lessons:44,hours:13,rating:4.7,students:1890,level:'متوسط',free:true,price:0,desc:'سرور REST API با Node.js — احراز هویت، دیتابیس، و دیپلوی.',topics:['Express','MongoDB','JWT','Socket.io','Deploy']},
+  {
+    id:1,
+    title:'پایتون از صفر تا استخدام',
+    icon:'🐍',
+    lang:'Python',
+    cat:'backend',
+    lessons:12,
+    hours:18,
+    rating:4.9,
+    students:3240,
+    level:'مقدماتی تا پیشرفته',
+    free:true,
+    price:0,
+    desc:'کامل‌ترین دوره پایتون فارسی — از متغیر تا ساخت API واقعی با FastAPI.',
+    topics:['متغیرها و انواع داده','توابع و ماژول‌ها','OOP','کار با فایل','FastAPI','پروژه نهایی'],
+    // === سرفصل‌های قابل ویرایش این دوره ===
+    syllabus: [
+      {title: "مقدمه‌ای بر پایتون و فلسفه آن", duration: "۱۲ دقیقه"},
+      {title: "نصب پایتون و محیط توسعه (VS Code)", duration: "۱۵ دقیقه"},
+      {title: "متغیرها، انواع داده و عملگرها", duration: "۲۲ دقیقه"},
+      {title: "ساختارهای شرطی if, elif, else", duration: "۱۸ دقیقه"},
+      {title: "حلقه‌های for و while + لیست‌ها", duration: "۲۵ دقیقه"},
+      {title: "توابع، پارامترها و بازگشت مقدار", duration: "۲۰ دقیقه"},
+      {title: "برنامه‌نویسی شیءگرا (OOP) - کلاس و آبجکت", duration: "۲۸ دقیقه"},
+      {title: "ارث‌بری، پلی‌مورفیسم و کپسوله‌سازی", duration: "۲۴ دقیقه"},
+      {title: "کار با فایل‌ها و مدیریت استثنا", duration: "۱۶ دقیقه"},
+      {title: "ماژول‌ها، پکیج‌ها و import", duration: "۱۴ دقیقه"},
+      {title: "کتابخانه‌های NumPy و Pandas", duration: "۳۰ دقیقه"},
+      {title: "مقدمه‌ای بر FastAPI و ساخت API", duration: "۲۶ دقیقه"}
+    ]
+  },
+  {
+    id:2,
+    title:'ری‌اکت جی‌اس پیشرفته',
+    icon:'⚛️',
+    lang:'React',
+    cat:'frontend',
+    lessons:10,
+    hours:14,
+    rating:4.8,
+    students:2100,
+    level:'متوسط',
+    free:true,
+    price:0,
+    desc:'از hooks پیشرفته تا بهینه‌سازی و تست — برای توسعه‌دهندگان جدی.',
+    topics:['useState / useEffect','Context API','React Query','Testing','Performance'],
+    syllabus: [
+      {title: "مرور React و JSX", duration: "۱۰ دقیقه"},
+      {title: "useState و مدیریت state محلی", duration: "۱۸ دقیقه"},
+      {title: "useEffect و چرخه حیات کامپوننت", duration: "۲۲ دقیقه"},
+      {title: "Custom Hooks و استفاده مجدد", duration: "۱۶ دقیقه"},
+      {title: "Context API و مدیریت state جهانی", duration: "۲۰ دقیقه"},
+      {title: "React Router v6 و مسیریابی", duration: "۱۵ دقیقه"},
+      {title: "React Query و مدیریت داده‌های سرور", duration: "۲۴ دقیقه"},
+      {title: "بهینه‌سازی عملکرد (Memo, useMemo, useCallback)", duration: "۱۹ دقیقه"},
+      {title: "تست کامپوننت‌ها با React Testing Library", duration: "۲۱ دقیقه"},
+      {title: "TypeScript در React", duration: "۲۳ دقیقه"}
+    ]
+  },
+  {
+    id:3,
+    title:'برنامه‌نویسی با Go',
+    icon:'🐹',
+    lang:'Go',
+    cat:'backend',
+    lessons:9,
+    hours:11,
+    rating:4.7,
+    students:980,
+    level:'متوسط تا پیشرفته',
+    free:true,
+    price:0,
+    desc:'زبان Go را از پایه یاد بگیر و سرویس‌های سریع و مقیاس‌پذیر بساز.',
+    topics:['Goroutines','Channels','HTTP Server','GORM','Docker'],
+    syllabus: [
+      {title: "مقدمه Go و syntax پایه", duration: "۱۴ دقیقه"},
+      {title: "متغیرها، انواع و ساختارها", duration: "۱۶ دقیقه"},
+      {title: "توابع، متدها و رابط‌ها (Interfaces)", duration: "۲۰ دقیقه"},
+      {title: "Goroutines و همزمانی", duration: "۲۵ دقیقه"},
+      {title: "Channels و الگوهای همزمانی", duration: "۲۲ دقیقه"},
+      {title: "ساخت HTTP Server با net/http", duration: "۱۸ دقیقه"},
+      {title: "کار با JSON و Middleware", duration: "۱۵ دقیقه"},
+      {title: "GORM و کار با دیتابیس", duration: "۲۳ دقیقه"},
+      {title: "تست در Go", duration: "۱۲ دقیقه"}
+    ]
+  },
+  {
+    id:4,
+    title:'فلاتر — اپ iOS و Android',
+    icon:'📱',
+    lang:'Flutter',
+    cat:'mobile',
+    lessons:10,
+    hours:16,
+    rating:4.8,
+    students:1560,
+    level:'مقدماتی',
+    free:true,
+    price:0,
+    desc:'یک کدبیس، دو پلتفرم. اپ واقعی بساز و روی استور منتشر کن.',
+    topics:['Widget tree','State management','Firebase','Animations','Publish'],
+    syllabus: [
+      {title: "مقدمه فلاتر و Dart", duration: "۱۲ دقیقه"},
+      {title: "Widgetها و ساختار درختی", duration: "۱۸ دقیقه"},
+      {title: "StatefulWidget و مدیریت وضعیت", duration: "۲۰ دقیقه"},
+      {title: "ناوبری و مسیریابی", duration: "۱۴ دقیقه"},
+      {title: "State Management با Provider", duration: "۲۲ دقیقه"},
+      {title: "کار با API و FutureBuilder", duration: "۱۷ دقیقه"},
+      {title: "انیمیشن‌ها و Hero Animation", duration: "۱۹ دقیقه"},
+      {title: "Firebase Authentication", duration: "۲۱ دقیقه"},
+      {title: "ذخیره‌سازی محلی و Hive", duration: "۱۵ دقیقه"},
+      {title: "انتشار اپ در Google Play و App Store", duration: "۲۵ دقیقه"}
+    ]
+  },
+  {
+    id:5,
+    title:'یادگیری ماشین با Python',
+    icon:'🤖',
+    lang:'Python',
+    cat:'data',
+    lessons:10,
+    hours:22,
+    rating:4.9,
+    students:4200,
+    level:'متوسط',
+    free:true,
+    price:0,
+    desc:'scikit-learn، Pandas، و PyTorch — از مفاهیم تا مدل‌های واقعی.',
+    topics:['NumPy / Pandas','scikit-learn','Neural Networks','PyTorch','Deployment'],
+    syllabus: [
+      {title: "مقدمه یادگیری ماشین و هوش مصنوعی", duration: "۱۵ دقیقه"},
+      {title: "NumPy و عملیات ماتریسی", duration: "۱۸ دقیقه"},
+      {title: "Pandas و تحلیل داده", duration: "۲۴ دقیقه"},
+      {title: "تمیزکاری داده و پیش‌پردازش", duration: "۲۰ دقیقه"},
+      {title: "رگرسیون خطی و لجستیک", duration: "۲۲ دقیقه"},
+      {title: "الگوریتم‌های طبقه‌بندی (Decision Tree, SVM)", duration: "۲۶ دقیقه"},
+      {title: "خوشه‌بندی با K-Means", duration: "۱۶ دقیقه"},
+      {title: "شبکه‌های عصبی با PyTorch", duration: "۳۰ دقیقه"},
+      {title: "ارزیابی مدل و Cross Validation", duration: "۱۸ دقیقه"},
+      {title: "دیپلوی مدل با FastAPI", duration: "۲۳ دقیقه"}
+    ]
+  },
+  {
+    id:6,
+    title:'HTML & CSS مقدماتی',
+    icon:'🌐',
+    lang:'HTML/CSS',
+    cat:'frontend',
+    lessons:9,
+    hours:8,
+    rating:4.6,
+    students:5800,
+    level:'مقدماتی',
+    free:true,
+    price:0,
+    desc:'صفر تا ساخت وب‌سایت واکنش‌گرا — کاملاً رایگان برای همه.',
+    topics:['HTML5','CSS3','Flexbox','Grid','Responsive'],
+    syllabus: [
+      {title: "مقدمه HTML و ساختار صفحه", duration: "۱۰ دقیقه"},
+      {title: "تگ‌های معنایی و فرم‌ها", duration: "۱۴ دقیقه"},
+      {title: "CSS پایه و انتخابگرها", duration: "۱۶ دقیقه"},
+      {title: "Box Model و موقعیت‌دهی", duration: "۱۲ دقیقه"},
+      {title: "Flexbox - کامل و کاربردی", duration: "۲۰ دقیقه"},
+      {title: "CSS Grid و طراحی دوبعدی", duration: "۱۸ دقیقه"},
+      {title: "Responsive Design و Media Queries", duration: "۱۵ دقیقه"},
+      {title: "انیمیشن و transition", duration: "۱۱ دقیقه"},
+      {title: "پروژه نهایی: ساخت وب‌سایت شخصی", duration: "۲۵ دقیقه"}
+    ]
+  },
+  {
+    id:7,
+    title:'Docker و Kubernetes',
+    icon:'🐳',
+    lang:'DevOps',
+    cat:'devops',
+    lessons:9,
+    hours:13,
+    rating:4.7,
+    students:730,
+    level:'پیشرفته',
+    free:true,
+    price:0,
+    desc:'containerization کامل — از dockerfile تا orchestration در کلاستر.',
+    topics:['Docker','docker-compose','Kubernetes','Helm','CI/CD'],
+    syllabus: [
+      {title: "مقدمه کانتینر و Docker", duration: "۱۴ دقیقه"},
+      {title: "Dockerfile و ساخت ایمیج", duration: "۲۰ دقیقه"},
+      {title: "Docker Compose و محیط چندکانتینری", duration: "۱۸ دقیقه"},
+      {title: "مدیریت حجم‌ها و شبکه‌ها", duration: "۱۲ دقیقه"},
+      {title: "مقدمه Kubernetes و مفاهیم پایه", duration: "۲۲ دقیقه"},
+      {title: "Deployment, Service و Ingress", duration: "۲۵ دقیقه"},
+      {title: "ConfigMap و Secret", duration: "۱۳ دقیقه"},
+      {title: "Helm و مدیریت چارت‌ها", duration: "۱۷ دقیقه"},
+      {title: "CI/CD با GitHub Actions + Docker", duration: "۲۴ دقیقه"}
+    ]
+  },
+  {
+    id:8,
+    title:'Node.js و Express',
+    icon:'🟢',
+    lang:'Node.js',
+    cat:'backend',
+    lessons:9,
+    hours:13,
+    rating:4.7,
+    students:1890,
+    level:'متوسط',
+    free:true,
+    price:0,
+    desc:'سرور REST API با Node.js — احراز هویت، دیتابیس، و دیپلوی.',
+    topics:['Express','MongoDB','JWT','Socket.io','Deploy'],
+    syllabus: [
+      {title: "مقدمه Node.js و ماژول‌ها", duration: "۱۲ دقیقه"},
+      {title: "Express.js و مسیریابی", duration: "۱۶ دقیقه"},
+      {title: "Middleware و Error Handling", duration: "۱۴ دقیقه"},
+      {title: "اتصال به MongoDB با Mongoose", duration: "۲۰ دقیقه"},
+      {title: "احراز هویت با JWT", duration: "۲۲ دقیقه"},
+      {title: "اعتبارسنجی و امنیت", duration: "۱۵ دقیقه"},
+      {title: "Socket.io و ارتباط real-time", duration: "۱۸ دقیقه"},
+      {title: "دیپلوی روی Render / Railway", duration: "۱۹ دقیقه"},
+      {title: "پروژه نهایی: بک‌اند کامل", duration: "۲۸ دقیقه"}
+    ]
+  }
 ];
 
+// =====================================================
+// ==================== وضعیت برنامه ====================
+// =====================================================
 let state = {
   user: null,
   enrolled: {},
@@ -520,6 +869,9 @@ let state = {
   selectedPlan: 'free',
 };
 
+// =====================================================
+// ==================== توابع کمکی ====================
+// =====================================================
 function showToast(msg, ok=false) {
   const t = document.getElementById('toast');
   t.textContent = msg;
@@ -549,9 +901,11 @@ function updateNav() {
 function selectPlan(p) {
   state.selectedPlan = p;
   document.getElementById('plan-free').classList.toggle('selected', p==='free');
-  document.getElementById('plan-pro').classList.toggle('selected', p==='pro');
 }
 
+// =====================================================
+// ==================== ورود و ثبت‌نام ====================
+// =====================================================
 function doLogin() {
   const email = document.getElementById('login-email').value.trim();
   const pass = document.getElementById('login-pass').value;
@@ -597,16 +951,18 @@ function doLogout() {
   goTo('courses');
 }
 
+// =====================================================
+// ==================== فیلتر و نمایش دوره‌ها ====================
+// =====================================================
 let activeCategory = 'all', activePriceFilter = 'all';
 
 function setCategory(el, cat) {
-  document.querySelectorAll('.filter-chip').forEach(c=>{
-    if(['all','frontend','backend','mobile','data','devops'].some(x=>c.textContent.includes(c.getAttribute('onclick')?.match(/'(\w+)'/)?.[1]||''))) {}
-  });
-  const allChips = document.querySelectorAll('.filter-chip');
-  allChips.forEach(c=>{
-    const m = c.getAttribute('onclick')?.match(/'(\w+)'/);
-    if(m&&['all','frontend','backend','mobile','data','devops'].includes(m[1])) c.classList.remove('active');
+  document.querySelectorAll('.filter-chip').forEach(c => {
+    const onclick = c.getAttribute('onclick') || '';
+    if (onclick.includes("'all'") || onclick.includes("'frontend'") || onclick.includes("'backend'") || 
+        onclick.includes("'mobile'") || onclick.includes("'data'") || onclick.includes("'devops'")) {
+      c.classList.remove('active');
+    }
   });
   el.classList.add('active');
   activeCategory = cat;
@@ -615,12 +971,18 @@ function setCategory(el, cat) {
 
 function setPriceFilter(el, f) {
   const allChips = document.querySelectorAll('.filter-chip');
-  allChips.forEach(c=>{
-    const m = c.getAttribute('onclick')?.match(/'(\w+)'/);
-    if(m&&['free','paid'].includes(m[1])) c.classList.remove('active');
+  allChips.forEach(c => {
+    const onclick = c.getAttribute('onclick') || '';
+    if (onclick.includes("'free'") || onclick.includes("'paid'")) {
+      c.classList.remove('active');
+    }
   });
-  if(activePriceFilter===f){activePriceFilter='all';}
-  else{el.classList.add('active');activePriceFilter=f;}
+  if (activePriceFilter === f) {
+    activePriceFilter = 'all';
+  } else {
+    el.classList.add('active');
+    activePriceFilter = f;
+  }
   filterCourses();
 }
 
@@ -672,22 +1034,41 @@ function renderCoursesList(list) {
   `).join('');
 }
 
+// =====================================================
+// ==================== صفحه جزئیات دوره ====================
+// =====================================================
 function openCourse(id) {
   const c = COURSES.find(x=>x.id===id);
   if(!c) return;
   state.currentCourse = c;
+
   const prog = state.progress[id] || 0;
   const enrolled = !!state.enrolled[id];
   const pct = Math.round((prog / c.lessons) * 100);
   const canAccess = c.free || enrolled || (state.user && state.user.plan==='pro');
 
-  const lessons = Array.from({length: Math.min(c.lessons, 8)}, (_,i)=>({
-    n: i+1,
-    title: c.topics[i] || `جلسه ${i+1}`,
-    dur: `${8 + Math.round(Math.random()*12)} دقیقه`,
-    done: i < prog,
-    locked: !canAccess && i >= 2
-  }));
+  // === استفاده از سرفصل‌های اختصاصی هر دوره ===
+  let lessons = [];
+  
+  if (c.syllabus && c.syllabus.length > 0) {
+    // استفاده از سرفصل‌های تعریف‌شده برای این دوره
+    lessons = c.syllabus.map((item, i) => ({
+      n: i + 1,
+      title: item.title,
+      dur: item.duration || `${8 + Math.round(Math.random()*12)} دقیقه`,
+      done: i < prog,
+      locked: !canAccess && i >= 2
+    }));
+  } else {
+    // fallback قدیمی (در صورت نبود syllabus)
+    lessons = Array.from({length: Math.min(c.lessons, 8)}, (_,i)=>({
+      n: i+1,
+      title: c.topics[i] || `جلسه ${i+1}`,
+      dur: `${8 + Math.round(Math.random()*12)} دقیقه`,
+      done: i < prog,
+      locked: !canAccess && i >= 2
+    }));
+  }
 
   let enrollBtn = '';
   if(enrolled || (state.user && state.user.plan==='pro')) {
@@ -746,7 +1127,6 @@ function openCourse(id) {
             ${l.done?'<i class="ti ti-check lesson-check" aria-hidden="true"></i>':l.locked?'<i class="ti ti-lock lesson-lock" aria-hidden="true"></i>':'<i class="ti ti-player-play" style="font-size:13px;color:#4D7A9E" aria-hidden="true"></i>'}
           </div>
         `).join('')}
-        ${c.lessons > 8 ? `<div class="syllabus-item" style="justify-content:center;color:#4D7A9E;font-size:13px">+ ${c.lessons - 8} جلسه دیگر</div>`:''}
       </div>
     </div>
   `;
@@ -777,12 +1157,15 @@ function buyNow(id) {
   }, 1500);
 }
 
+// وقتی کاربر روی یک جلسه کلیک می‌کنه
 function watchLesson(courseId, lessonNum) {
   if(!state.user){showToast('ابتدا وارد شوید');return;}
   if(!state.enrolled[courseId]){showToast('ابتدا در دوره ثبت‌نام کنید');return;}
+  
   if(lessonNum > (state.progress[courseId]||0)) {
     state.progress[courseId] = lessonNum;
   }
+  
   const c = COURSES.find(x=>x.id===courseId);
   if(state.progress[courseId] >= c.lessons) {
     showToast(`تبریک! دوره "${c.title}" رو تموم کردی 🏆`, true);
@@ -793,11 +1176,15 @@ function watchLesson(courseId, lessonNum) {
   }
 }
 
+// =====================================================
+// ==================== گواهینامه ====================
+// =====================================================
 function showCert(id) {
   const c = COURSES.find(x=>x.id===id);
   const certId = 'BC-' + (id*1000+2024) + '-' + Math.floor(Math.random()*9000+1000);
   const now = new Date();
   const dateStr = now.toLocaleDateString('fa-IR');
+  
   document.getElementById('cert-content').innerHTML = `
     <div class="cert-wrap">
       <div class="cert-header">
@@ -826,20 +1213,28 @@ function showCert(id) {
         <button class="cert-btn cert-btn-outline" onclick="showToast('لینک اشتراک‌گذاری کپی شد', true)"><i class="ti ti-share" style="font-size:14px" aria-hidden="true"></i> اشتراک‌گذاری</button>
         <button class="cert-btn cert-btn-outline" onclick="goTo('dashboard')">داشبورد من</button>
       </div>
-      <div class="cert-id">قابل تأیید در: verify.bluecode.ir/${certId}</div>
+      <div class="cert-id">قابل تأیید در: https://shetwarp.github.io/bluecode/${certId}</div>
     </div>
   `;
   goTo('cert');
 }
 
+// =====================================================
+// ==================== داشبورد ====================
+// =====================================================
 function renderDashboard() {
-  if(!state.user){document.getElementById('dashboard-content').innerHTML='<div style="padding:60px;text-align:center"><p style="color:#4D7A9E;font-size:15px">برای مشاهده داشبورد ابتدا وارد شوید</p><br><button class="btn-sm btn-primary-sm" onclick="goTo(\'login\')" style="padding:10px 24px">ورود</button></div>';return;}
+  if(!state.user){
+    document.getElementById('dashboard-content').innerHTML='<div style="padding:60px;text-align:center"><p style="color:#4D7A9E;font-size:15px">برای مشاهده داشبورد ابتدا وارد شوید</p><br><button class="btn-sm btn-primary-sm" onclick="goTo(\'login\')" style="padding:10px 24px">ورود</button></div>';
+    return;
+  }
+  
   const enrolledCourses = COURSES.filter(c=>state.enrolled[c.id]);
   const doneCourses = enrolledCourses.filter(c=>state.progress[c.id]>=c.lessons);
   const totalHours = enrolledCourses.reduce((a,c)=>{
     const p = state.progress[c.id]||0;
     return a + Math.round((p/c.lessons)*c.hours);
   },0);
+  
   document.getElementById('dashboard-content').innerHTML = `
     <div class="dash-inner">
       <div class="dash-header">
@@ -873,5 +1268,61 @@ function renderDashboard() {
   `;
 }
 
+// =====================================================
+// ==================== ویدیو پلیر (اختیاری) ====================
+// =====================================================
+function openVideoPlayer(courseId, lessonNum){
+  const course = COURSES.find(c => c.id === courseId);
+  if(!course) return;
+  
+  // اگر ویدیو hash تعریف نشده باشه
+  const hash = course.videos?.[lessonNum - 1];
+  if(!hash){
+    showToast('ویدیو برای این جلسه هنوز اضافه نشده');
+    return;
+  }
+  
+  if(state.user && state.enrolled[courseId]){
+    if(lessonNum > (state.progress[courseId] || 0)){
+      state.progress[courseId] = lessonNum;
+    }
+  }
+  
+  document.getElementById('video-player-content').innerHTML = `
+    <div class="back-btn" onclick="openCourse(${courseId})">
+      بازگشت به دوره
+    </div>
+    <div class="video-layout">
+      <div class="video-frame">
+        <iframe
+          src="https://www.aparat.com/video/video/embed/videohash/${hash}/vt/frame"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <div class="video-sidebar">
+        ${course.syllabus ? course.syllabus.map((topic, index)=>`
+          <div
+            class="video-lesson ${lessonNum===index+1?'active':''}"
+            onclick="openVideoPlayer(${courseId},${index+1})">
+            جلسه ${index+1}
+            <br>
+            <small>${topic.title}</small>
+          </div>
+        `).join('') : course.topics.map((topic,index)=>`
+          <div
+            class="video-lesson ${lessonNum===index+1?'active':''}"
+            onclick="openVideoPlayer(${courseId},${index+1})">
+            جلسه ${index+1}
+            <br>
+            <small>${topic}</small>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+  goTo('player');
+}
+
+// شروع برنامه
 goTo('courses');
 </script>
