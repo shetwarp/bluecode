@@ -1,0 +1,1549 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlueCode | آموزش برنامه‌نویسی حرفه‌ای | کد آبی</title>
+    <meta name="description" content="پلتفرم آموزشی BlueCode (کد آبی) - آپلود و یادگیری دوره‌های برنامه‌نویسی با کیفیت. لاگین حرفه‌ای، نظرات کاربران، دوره‌های کاربرمحور در پایتون، جاوااسکریپت، هوش مصنوعی و بیشتر. بهترین جایگزین فرادرس و تاپ‌لرن برای آموزش کدنویسی.">
+    <meta name="keywords" content="آموزش برنامه نویسی, دوره برنامه نویسی, آموزش پایتون, آموزش جاوااسکریپت, آموزش ری اکت, هوش مصنوعی, BlueCode, کد آبی, فرادرس, تاپ لرن, یادگیری آنلاین برنامه نویسی, آپلود دوره آموزشی, نظرات برنامه نویسی">
+    <meta name="author" content="BlueCode Team">
+    <meta property="og:title" content="BlueCode | آموزش برنامه‌نویسی با کد آبی">
+    <meta property="og:description" content="پلتفرم حرفه‌ای آپلود، یادگیری و بحث درباره بهترین دوره‌های برنامه‌نویسی. با لاگین امن و سئوی قدرتمند.">
+    <meta property="og:image" content="https://picsum.photos/id/1015/1200/630">
+    <meta property="og:url" content="https://bluecode.ir">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://bluecode.ir">
+    
+    <!-- Tailwind CSS Play CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap');
+        
+        :root {
+            --primary-blue: #2563eb;
+            --accent-cyan: #06b67f;
+        }
+        
+        body {
+            font-family: 'Vazirmatn', 'Inter', system-ui, -apple-system, sans-serif;
+        }
+        
+        .nav-active {
+            color: #2563eb;
+            font-weight: 600;
+        }
+        
+        .course-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .course-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+        
+        .modal {
+            animation: modalPop 0.2s ease-out forwards;
+        }
+        
+        @keyframes modalPop {
+            from {
+                opacity: 0;
+                transform: scale(0.95) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            right: 0;
+            width: 60%;
+            height: 3px;
+            background: linear-gradient(to left, #2563eb, #06b67f);
+            border-radius: 3px;
+        }
+        
+        .tech-gradient {
+            background: linear-gradient(135deg, #1e40af 0%, #2563eb 50%, #0ea5e9 100%);
+        }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+        }
+        
+        .nav-scrolled {
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        
+        .course-grid {
+            scrollbar-width: thin;
+        }
+        
+        .star {
+            color: #fbbf24;
+        }
+        
+        .filter-chip {
+            transition: all 0.2s ease;
+        }
+        
+        .filter-chip.active {
+            background-color: #2563eb;
+            color: white;
+            border-color: #2563eb;
+        }
+        
+        .fake-video-player {
+            background: linear-gradient(45deg, #1e293b, #0f172a);
+        }
+        
+        .modern-shadow {
+            box-shadow: 0 10px 15px -3px rgb(15 23 42 / 0.1), 0 4px 6px -4px rgb(15 23 42 / 0.1);
+        }
+        
+        .rtl-text {
+            text-align: right;
+        }
+        
+        .bluecode-logo {
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+    </style>
+</head>
+<body class="bg-zinc-50 text-zinc-800">
+    <!-- Navbar -->
+    <nav id="navbar" class="bg-white border-b border-zinc-200 sticky top-0 z-50 transition-all">
+        <div class="max-w-screen-2xl mx-auto">
+            <div class="px-8 py-4 flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center gap-x-3">
+                    <div class="w-11 h-11 bg-gradient-to-br from-blue-600 via-blue-700 to-cyan-500 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/30">
+                        <div class="text-white text-3xl font-black tracking-tighter">+</div>
+                    </div>
+                    <div>
+                        <div class="bluecode-logo text-3xl font-extrabold bg-gradient-to-r from-blue-700 to-cyan-600 bg-clip-text text-transparent">BlueCode</div>
+                        <div class="text-[10px] text-blue-500 -mt-1 font-medium tracking-[2px]">کد آبی</div>
+                    </div>
+                </div>
+                
+                <!-- Desktop Nav -->
+                <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
+                    <a href="#home" class="hover:text-blue-600 transition-colors">خانه</a>
+                    <a href="bluecode.html" class="hover:text-blue-600 transition-colors">دوره‌ها</a>
+                    <a href="#categories" class="hover:text-blue-600 transition-colors">دسته‌بندی‌ها</a>
+                    <a href="#teach" class="hover:text-blue-600 transition-colors">تدریس کن</a>
+                    <a href="#blog" class="hover:text-blue-600 transition-colors">بلاگ</a>
+                </div>
+                
+                <!-- Search Bar (Desktop) -->
+                <div class="hidden lg:flex items-center flex-1 max-w-md mx-8">
+                    <div class="relative w-full">
+                        <input id="nav-search" 
+                               type="text" 
+                               placeholder="جستجوی دوره‌ها (پایتون، جاوااسکریپت...)"
+                               class="w-full bg-zinc-100 border border-zinc-200 focus:border-blue-500 transition-colors text-sm rounded-3xl py-2.5 pr-11 pl-5 outline-none placeholder:text-zinc-400">
+                        <i class="fa-solid fa-search absolute right-4 top-3 text-zinc-400"></i>
+                    </div>
+                </div>
+                
+                <!-- Auth Buttons / User Menu -->
+                <div class="flex items-center gap-x-3" id="auth-section">
+                    <!-- Populated by JS -->
+                    <button onclick="openAuthModal('login')" 
+                            class="px-5 py-2 text-sm font-semibold text-blue-600 hover:bg-blue-50 rounded-3xl transition-colors border border-blue-200">
+                        ورود
+                    </button>
+                    <button onclick="openAuthModal('register')" 
+                            class="px-6 py-2 text-sm font-semibold bg-blue-600 hover:bg-blue-700 text-white rounded-3xl transition-all shadow-md shadow-blue-500/30">
+                        ثبت‌نام
+                    </button>
+                </div>
+                
+                <!-- Mobile Menu -->
+                <div class="md:hidden flex items-center gap-x-2">
+                    <button onclick="openAuthModal('login')" class="text-blue-600 p-2">
+                        <i class="fa-solid fa-user text-xl"></i>
+                    </button>
+                    <button class="text-zinc-500 p-2" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-b px-6 py-4 text-sm">
+        <div class="flex flex-col gap-y-3">
+            <a href="#home" class="py-1">خانه</a>
+            <a href="bluecode.html" class="py-1">دوره‌ها</a>
+            <a href="#categories" class="py-1">دسته‌بندی‌ها</a>
+            <a href="#teach" class="py-1">تدریس کن</a>
+            <a href="#blog" class="py-1">بلاگ</a>
+            <div class="pt-2 border-t flex gap-x-2">
+                <button onclick="openAuthModal('login'); document.getElementById('mobile-menu').classList.add('hidden')" 
+                        class="flex-1 py-2 text-blue-600 border border-blue-200 rounded-3xl text-sm font-semibold">ورود</button>
+                <button onclick="openAuthModal('register'); document.getElementById('mobile-menu').classList.add('hidden')" 
+                        class="flex-1 py-2 bg-blue-600 text-white rounded-3xl text-sm font-semibold">ثبت‌نام</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Hero Section -->
+    <section id="home" class="relative bg-white overflow-hidden">
+        <div class="max-w-screen-2xl mx-auto px-8 pt-16 pb-20">
+            <div class="grid md:grid-cols-12 gap-12 items-center">
+                <div class="md:col-span-7">
+                    <div class="inline-flex items-center gap-x-2 bg-blue-100 text-blue-700 px-4 py-1.5 rounded-3xl text-xs font-semibold mb-6 tracking-wider">
+                        <div class="w-2 h-2 bg-blue-600 rounded-full animate-pulse"></div>
+                        پلتفرم آموزشی برنامه‌نویسی در ایران
+                    </div>
+                    
+                    <h1 class="text-5xl md:text-6xl font-extrabold leading-[1.05] tracking-tighter mb-6">
+                        یادگیری برنامه‌نویسی<br>
+                        <span class="bg-gradient-to-r from-blue-700 via-blue-600 to-cyan-500 bg-clip-text text-transparent">با کد آبی</span>
+                    </h1>
+                    
+                    <p class="max-w-lg text-xl text-zinc-600 mb-8 leading-relaxed">
+                        مدرسین حرفه‌ای دوره‌های باکیفیت آپلود می‌کنند. شما یاد می‌گیرید، نظر می‌دهید و با جامعه برنامه‌نویسان رشد می‌کنید.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-4">
+                        <button  
+                                class="px-8 py-4 bg-blue-600 hover:bg-blue-700 transition-all text-white font-semibold rounded-3xl text-base shadow-xl shadow-blue-600/40 flex items-center gap-x-3 group">
+                    <a href="bluecode.html">شروع یادگیری رایگان</a>
+                            <i class="fa-solid fa-arrow-left group-hover:-translate-x-1 transition-transform"></i>
+                        </button>
+                        
+                        <button 
+                                class="px-8 py-4 border border-zinc-300 hover:bg-zinc-100 transition-all font-semibold rounded-3xl text-base flex items-center gap-x-3">
+                            <i class="fa-solid fa-chalkboard-teacher"></i>
+                            <span><a href="https://yasin-namani.github.io/bluecode/">چت بات اموزشی </a></span>
+                        </button>
+                    </div>
+                    
+                    <div class="flex items-center gap-x-8 mt-10">
+                        <div class="flex -space-x-3">
+                            <img src="https://picsum.photos/id/1005/32/32" class="w-8 h-8 rounded-full ring-2 ring-white object-cover" alt="">
+                            <img src="https://picsum.photos/id/1011/32/32" class="w-8 h-8 rounded-full ring-2 ring-white object-cover" alt="">
+                            <img src="https://picsum.photos/id/1009/32/32" class="w-8 h-8 rounded-full ring-2 ring-white object-cover" alt="">
+                        </div>
+                        <div class="text-sm text-zinc-500">
+                            <span class="font-semibold text-zinc-700">+1000</span> دانشجوی فعال
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Hero Visual -->
+                <div class="md:col-span-5 relative">
+                    <div class="relative rounded-3xl overflow-hidden shadow-2xl shadow-blue-900/10 border border-zinc-100">
+                        <img src="https://picsum.photos/id/1015/700/620" alt="برنامه‌نویس در حال کدنویسی با تم آبی" class="w-full h-auto object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-blue-900/70 via-blue-900/20 to-transparent"></div>
+                        
+                        <div class="absolute bottom-6 right-6 left-6 glass rounded-2xl p-5 border border-white/60">
+                            <div class="flex items-center justify-between text-sm">
+                                <div>
+                                    <div class="font-semibold text-zinc-800">دوره جدید: هوش مصنوعی با پایتون</div>
+                                    <div class="text-emerald-600 text-xs flex items-center gap-x-1 mt-0.5">
+                                        <i class="fa-solid fa-check-circle"></i>
+                                        <span>3 نفر همین امروز شروع کردند</span>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-xs text-zinc-500">۴.۹</div>
+                                    <div class="flex text-yellow-400 text-sm">★★★★★</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Stats -->
+    <section class="border-b border-zinc-100 bg-white">
+        <div class="max-w-screen-2xl mx-auto px-8 py-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="text-4xl font-extrabold text-blue-700">8+</div>
+                    <div class="text-sm text-zinc-500 mt-1 font-medium">دوره آموزشی فعال</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-extrabold text-blue-700">1000+</div>
+                    <div class="text-sm text-zinc-500 mt-1 font-medium">دانشجوی فعال</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-extrabold text-blue-700">100</div>
+                    <div class="text-sm text-zinc-500 mt-1 font-medium">دیدگاه ثبت شده</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-extrabold text-blue-700">5+</div>
+                    <div class="text-sm text-zinc-500 mt-1 font-medium">مدرس حرفه‌ای</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Search + Filters + Courses -->
+    <section id="courses" class="max-w-screen-2xl mx-auto px-8 pt-14 pb-10">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-y-4">
+            <div>
+                <h2 class="section-title text-3xl font-extrabold tracking-tight">دوره‌های پرطرفدار</h2>
+                <p class="text-zinc-500 mt-2">بهترین دوره‌های برنامه‌نویسی انتخاب شده توسط جامعه</p>
+            </div>
+            
+            <!-- Search -->
+            <div class="relative w-full md:w-80">
+                <input id="search-input" 
+                       type="text" 
+                       placeholder="جستجو در دوره‌ها..."
+                       oninput="filterCourses()"
+                       class="w-full bg-white border border-zinc-200 focus:border-blue-500 transition-colors rounded-3xl py-3 pr-12 pl-5 text-sm outline-none shadow-sm">
+                <i class="fa-solid fa-search absolute right-5 top-4 text-zinc-400"></i>
+            </div>
+        </div>
+        
+        <!-- Filter Chips -->
+        <div id="categories" class="flex flex-wrap gap-2 mb-8">
+            <button onclick="filterByCategory('all')" class="filter-chip active px-5 py-2 text-sm font-medium border border-blue-600 bg-blue-600 text-white rounded-3xl flex items-center gap-x-2">
+                <span>همه</span>
+            </button>
+            <button onclick="filterByCategory('python')" class="filter-chip px-5 py-2 text-sm font-medium border border-zinc-200 hover:border-zinc-300 bg-white rounded-3xl flex items-center gap-x-2">
+                <i class="fa-brands fa-python text-blue-600"></i>
+                <span>پایتون</span>
+            </button>
+            <button onclick="filterByCategory('javascript')" class="filter-chip px-5 py-2 text-sm font-medium border border-zinc-200 hover:border-zinc-300 bg-white rounded-3xl flex items-center gap-x-2">
+                <i class="fa-brands fa-js text-yellow-500"></i>
+                <span>جاوااسکریپت</span>
+            </button>
+            <button onclick="filterByCategory('react')" class="filter-chip px-5 py-2 text-sm font-medium border border-zinc-200 hover:border-zinc-300 bg-white rounded-3xl flex items-center gap-x-2">
+                <i class="fa-brands fa-react text-cyan-500"></i>
+                <span>ری‌اکت</span>
+            </button>
+            <button onclick="filterByCategory('ai')" class="filter-chip px-5 py-2 text-sm font-medium border border-zinc-200 hover:border-zinc-300 bg-white rounded-3xl flex items-center gap-x-2">
+                <i class="fa-solid fa-robot text-purple-600"></i>
+                <span>هوش مصنوعی</span>
+            </button>
+            <button onclick="filterByCategory('frontend')" class="filter-chip px-5 py-2 text-sm font-medium border border-zinc-200 hover:border-zinc-300 bg-white rounded-3xl flex items-center gap-x-2">
+                <span>فرانت‌اند</span>
+            </button>
+        </div>
+        
+        <!-- Courses Grid -->
+        <div id="courses-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
+            <!-- Populated dynamically by JavaScript -->
+        </div>
+        
+        <div class="text-center mt-10">
+            <button onclick="showAllCourses()" 
+                    class="px-8 py-3 text-sm font-semibold border border-zinc-300 hover:bg-zinc-100 transition-colors rounded-3xl flex items-center gap-x-2 mx-auto">
+                <span>مشاهده همه دوره‌ها</span>
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+        </div>
+    </section>
+    
+    <!-- How it Works / Why BlueCode -->
+    <section class="bg-white border-y border-zinc-100 py-16">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="text-center mb-12">
+                <h2 class="section-title text-3xl font-extrabold tracking-tight inline-block">چرا BlueCode؟</h2>
+                <p class="text-zinc-500 mt-3 max-w-md mx-auto">تجربه‌ای متفاوت از آموزش برنامه‌نویسی با تمرکز روی کیفیت و جامعه</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-zinc-50 rounded-3xl p-8 border border-zinc-100">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-upload text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-3">آپلود آسان دوره</h3>
+                    <p class="text-zinc-600 leading-relaxed text-[15px]">مدرسین می‌توانند به سادگی ویدیوها، کدهای نمونه و منابع را آپلود کنند. پس از بررسی سریع منتشر می‌شود.</p>
+                </div>
+                
+                <div class="bg-zinc-50 rounded-3xl p-8 border border-zinc-100">
+                    <div class="w-12 h-12 bg-cyan-100 text-cyan-600 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-comments text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-3">نظرات واقعی و مفید</h3>
+                    <p class="text-zinc-600 leading-relaxed text-[15px]">هر دوره دارای بخش نظرات فعال است. دانشجویان تجربیات واقعی خود را به اشتراک می‌گذارند و به یکدیگر کمک می‌کنند.</p>
+                </div>
+                
+                <div class="bg-zinc-50 rounded-3xl p-8 border border-zinc-100">
+                    <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-shield-halved text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-3">لاگین حرفه‌ای و امن</h3>
+                    <p class="text-zinc-600 leading-relaxed text-[15px]">ورود با ایمیل + رمز عبور قوی، تأیید دو مرحله‌ای (در نسخه کامل)، نقش‌های جداگانه دانشجو و مدرس و امنیت بالا.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Become Instructor / Teach Section -->
+    <section id="teach" class="max-w-screen-2xl mx-auto px-8 py-16">
+        <div class="bg-gradient-to-br from-blue-700 to-blue-800 rounded-3xl p-10 md:p-14 text-white relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-2/3 h-full bg-[radial-gradient(#ffffff10_0.8px,transparent_1px)] bg-[length:4px_4px]"></div>
+            
+            <div class="relative z-10 grid md:grid-cols-12 gap-x-12 items-center">
+                <div class="md:col-span-7">
+                    <div class="uppercase tracking-[3px] text-blue-300 text-xs font-semibold mb-3">برای مدرسین</div>
+                    <h2 class="text-4xl font-extrabold tracking-tighter mb-4">تدریس در BlueCode<br>و کسب درآمد</h2>
+                    <p class="text-blue-100 max-w-md text-lg">دانش خود را به اشتراک بگذارید. دوره‌های خود را آپلود کنید، دانشجو جذب کنید و از فروش دوره‌ها درآمد کسب کنید.</p>
+                    
+                    <div class="mt-8 flex flex-wrap gap-4">
+                        <button onclick="openAuthModal('register')" 
+                                class="px-8 py-4 bg-white text-blue-700 font-bold rounded-3xl hover:bg-blue-50 transition-colors flex items-center gap-x-3 text-sm shadow-xl">
+                            <span>ثبت‌نام به عنوان مدرس</span>
+                        </button>
+                        <button onclick="document.getElementById('upload-modal').showModal()" 
+                                class="px-8 py-4 border border-white/40 hover:bg-white/10 transition-colors rounded-3xl text-sm font-semibold flex items-center gap-x-2">
+                            <i class="fa-solid fa-upload"></i>
+                            <span><a href="bluecode.html"> اپلود دوره ازمایشی</a></span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="md:col-span-5 mt-10 md:mt-0">
+                    <div class="bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-white/20">
+                        <div class="text-xs uppercase tracking-widest text-blue-200 mb-4">مزایای مدرسین</div>
+                        <ul class="space-y-3 text-sm">
+                            <li class="flex items-center gap-x-3"><i class="fa-solid fa-check text-emerald-400"></i> <span>کمیسیون رقابتی تا ۷۰٪</span></li>
+                            <li class="flex items-center gap-x-3"><i class="fa-solid fa-check text-emerald-400"></i> <span>ابزارهای تحلیل دانشجو</span></li>
+                            <li class="flex items-center gap-x-3"><i class="fa-solid fa-check text-emerald-400"></i> <span>پشتیبانی فنی و بازاریابی</span></li>
+                            <li class="flex items-center gap-x-3"><i class="fa-solid fa-check text-emerald-400"></i> <span>گواهینامه رسمی BlueCode</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Blog teaser for SEO -->
+    <section id="blog" class="max-w-screen-2xl mx-auto px-8 pb-16">
+        <div class="flex items-end justify-between mb-8">
+            <div>
+                <h2 class="section-title text-3xl font-extrabold tracking-tight">از بلاگ BlueCode</h2>
+                <p class="text-zinc-500">مقالات تخصصی برای تقویت مهارت برنامه‌نویسی</p>
+            </div>
+            <a href="#" class="hidden md:flex items-center text-sm font-semibold text-blue-600 hover:text-blue-700">همه مقالات <i class="fa-solid fa-arrow-left mr-2"></i></a>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="group bg-white border border-zinc-100 rounded-3xl overflow-hidden hover:shadow-xl transition-all">
+                <img src="https://picsum.photos/id/201/600/240" class="w-full h-48 object-cover group-hover:scale-105 transition-transform" alt="آموزش پایتون">
+                <div class="p-6">
+                    <div class="text-xs text-emerald-600 font-semibold">پایتون • ۵ روز پیش</div>
+                    <h3 class="font-bold text-lg mt-2 leading-tight group-hover:text-blue-600 transition-colors">۱۰ پروژه عملی پایتون که رزومه‌تان را قوی می‌کند</h3>
+                    <p class="text-sm text-zinc-500 mt-3 line-clamp-2">از ساخت ربات تلگرام تا تحلیل داده با پانداس — پروژه‌هایی که واقعاً در مصاحبه‌های شغلی به درد می‌خورند.</p>
+                </div>
+            </div>
+            
+            <div class="group bg-white border border-zinc-100 rounded-3xl overflow-hidden hover:shadow-xl transition-all">
+                <img src="https://picsum.photos/id/160/600/240" class="w-full h-48 object-cover group-hover:scale-105 transition-transform" alt="جاوااسکریپت">
+                <div class="p-6">
+                    <div class="text-xs text-amber-600 font-semibold">جاوااسکریپت • ۲ هفته پیش</div>
+                    <h3 class="font-bold text-lg mt-2 leading-tight group-hover:text-blue-600 transition-colors">آینده فرانت‌اند: چرا باید TypeScript یاد بگیریم؟</h3>
+                    <p class="text-sm text-zinc-500 mt-3 line-clamp-2">مقایسه کامل JS و TS + راهنمای مهاجرت از جاوااسکریپت به تایپ‌اسکریپت در پروژه‌های واقعی.</p>
+                </div>
+            </div>
+            
+            <div class="group bg-white border border-zinc-100 rounded-3xl overflow-hidden hover:shadow-xl transition-all">
+                <img src="https://picsum.photos/id/251/600/240" class="w-full h-48 object-cover group-hover:scale-105 transition-transform" alt="AI">
+                <div class="p-6">
+                    <div class="text-xs text-purple-600 font-semibold">هوش مصنوعی • ۳ هفته پیش</div>
+                    <h3 class="font-bold text-lg mt-2 leading-tight group-hover:text-blue-600 transition-colors">یادگیری ماشین بدون دیتاساینس؟ بله، ممکن است!</h3>
+                    <p class="text-sm text-zinc-500 mt-3 line-clamp-2">چگونه با ابزارهای low-code و AutoML مدل‌های هوش مصنوعی بسازیم و در محصول واقعی استفاده کنیم.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-zinc-900 text-zinc-400 text-sm">
+        <div class="max-w-screen-2xl mx-auto px-8 pt-14 pb-10">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-y-10">
+                <div class="col-span-2 md:col-span-1">
+                    <div class="flex items-center gap-x-3 mb-4">
+                        <div class="w-9 h-9 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-2xl flex items-center justify-center">
+                            <span class="text-white font-black text-xl tracking-tighter">BC</span>
+                        </div>
+                        <span class="text-white font-extrabold text-2xl">BlueCode</span>
+                    </div>
+                    <p class="text-xs leading-relaxed">آموزش برنامه‌نویسی با کیفیت، جامعه‌محور و در دسترس همه.</p>
+                </div>
+                
+                <div>
+                    <div class="font-semibold text-white mb-4 text-xs tracking-wider">محصول</div>
+                    <div class="space-y-2.5 text-xs">
+                        <div>دوره‌ها</div>
+                        <div>مدرسین</div>
+                        <div>اشتراک سازمانی</div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="font-semibold text-white mb-4 text-xs tracking-wider">منابع</div>
+                    <div class="space-y-2.5 text-xs">
+                        <div>بلاگ</div>
+                        <div>مرکز راهنما</div>
+                        <div>ویدیوهای رایگان</div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="font-semibold text-white mb-4 text-xs tracking-wider">شرکت</div>
+                    <div class="space-y-2.5 text-xs">
+                        <div>درباره ما</div>
+                        <div>فرصت‌های شغلی</div>
+                        <div>تماس با ما</div>
+                    </div>
+                </div>
+                
+                <div class="col-span-2 md:col-span-1">
+                    <div class="font-semibold text-white mb-4 text-xs tracking-wider">خبرنامه</div>
+                    <p class="text-xs mb-3">دوره‌ها و نکات جدید را دریافت کنید</p>
+                    <div class="flex">
+                        <input type="email" placeholder="ایمیل شما" class="flex-1 bg-zinc-800 border border-zinc-700 text-xs rounded-r-3xl px-4 py-2 outline-none">
+                        <button class="bg-blue-600 hover:bg-blue-500 transition-colors px-5 text-xs font-bold rounded-l-3xl">عضویت</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-14 pt-8 border-t border-zinc-800 flex flex-col md:flex-row justify-between items-center text-xs gap-y-3">
+                <div>© ۱۴۰۴ BlueCode. تمام حقوق محفوظ است.</div>
+                <div class="flex gap-x-6">
+                    <span>حریم خصوصی</span>
+                    <span>شرایط استفاده</span>
+                    <span>سوالات متداول</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Auth Modal (Login + Register tabs) -->
+    <dialog id="auth-modal" class="modal p-0 rounded-3xl w-full max-w-md backdrop:bg-black/60 border-none shadow-2xl">
+        <div class="bg-white rounded-3xl overflow-hidden">
+            <!-- Tabs -->
+            <div class="flex border-b">
+                <button onclick="switchAuthTab('login')" id="login-tab"
+                        class="flex-1 py-4 font-semibold text-sm border-b-2 border-blue-600 text-blue-600">ورود</button>
+                <button onclick="switchAuthTab('register')" id="register-tab"
+                        class="flex-1 py-4 font-semibold text-sm text-zinc-500 hover:text-zinc-700">ثبت‌نام</button>
+            </div>
+            
+            <!-- Login Form -->
+            <div id="login-form" class="p-8">
+                <h3 class="font-extrabold text-2xl mb-1">خوش آمدید به BlueCode</h3>
+                <p class="text-sm text-zinc-500 mb-6">برای دسترسی به دوره‌ها و ثبت نظر وارد شوید</p>
+                
+                <div class="space-y-4">
+                    <div>
+                        <label class="text-xs font-semibold text-zinc-500 block mb-1.5">ایمیل</label>
+                        <input id="login-email" type="email" value="demo@bluecode.ir" class="w-full border border-zinc-200 rounded-2xl px-4 py-3 text-sm focus:border-blue-500 outline-none">
+                    </div>
+                    <div>
+                        <label class="text-xs font-semibold text-zinc-500 block mb-1.5">رمز عبور</label>
+                        <input id="login-password" type="password" value="demo1234" class="w-full border border-zinc-200 rounded-2xl px-4 py-3 text-sm focus:border-blue-500 outline-none">
+                    </div>
+                    
+                    <div class="flex items-center justify-between text-xs">
+                        <label class="flex items-center gap-x-2 cursor-pointer">
+                            <input type="checkbox" checked class="accent-blue-600"> 
+                            <span class="text-zinc-600">مرا به خاطر بسپار</span>
+                        </label>
+                        <a href="#" class="text-blue-600 hover:underline">فراموشی رمز عبور؟</a>
+                    </div>
+                    
+                    <button onclick="performLogin()" 
+                            class="w-full py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-3xl text-sm mt-2 transition-colors">
+                        ورود به حساب
+                    </button>
+                    
+                    <!-- Social Login -->
+                    <div class="pt-3">
+                        <div class="text-center text-xs text-zinc-400 mb-3">یا ورود با</div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <button onclick="quickSocialLogin('google')" class="flex items-center justify-center gap-x-2 border border-zinc-200 hover:bg-zinc-50 py-2.5 rounded-2xl text-sm font-medium">
+                                <i class="fa-brands fa-google text-red-500"></i>
+                                <span>گوگل</span>
+                            </button>
+                            <button onclick="quickSocialLogin('github')" class="flex items-center justify-center gap-x-2 border border-zinc-200 hover:bg-zinc-50 py-2.5 rounded-2xl text-sm font-medium">
+                                <i class="fa-brands fa-github"></i>
+                                <span>گیت‌هاب</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Register Form -->
+            <div id="register-form" class="p-8 hidden">
+                <h3 class="font-extrabold text-2xl mb-1">ایجاد حساب جدید</h3>
+                <p class="text-sm text-zinc-500 mb-6">فقط ۳۰ ثانیه طول می‌کشد</p>
+                
+                <div class="space-y-4">
+                    <div class="grid grid-cols-1 gap-4">
+                        <div>
+                            <label class="text-xs font-semibold text-zinc-500 block mb-1.5">نام و نام خانوادگی</label>
+                            <input id="reg-name" type="text" value="سارا محمدی" class="w-full border border-zinc-200 rounded-2xl px-4 py-3 text-sm focus:border-blue-500 outline-none">
+                        </div>
+                        
+                        <div>
+                            <label class="text-xs font-semibold text-zinc-500 block mb-1.5">ایمیل</label>
+                            <input id="reg-email" type="email" value="sara@bluecode.ir" class="w-full border border-zinc-200 rounded-2xl px-4 py-3 text-sm focus:border-blue-500 outline-none">
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="text-xs font-semibold text-zinc-500 block mb-1.5">رمز عبور</label>
+                                <input id="reg-password" type="password" value="demo1234" class="w-full border border-zinc-200 rounded-2xl px-4 py-3 text-sm focus:border-blue-500 outline-none">
+                            </div>
+                            <div>
+                                <label class="text-xs font-semibold text-zinc-500 block mb-1.5">تکرار رمز</label>
+                                <input id="reg-password-confirm" type="password" value="demo1234" class="w-full border border-zinc-200 rounded-2xl px-4 py-3 text-sm focus:border-blue-500 outline-none">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="text-xs font-semibold text-zinc-500 block mb-1.5">نوع حساب</label>
+                            <select id="reg-role" class="w-full border border-zinc-200 rounded-2xl px-4 py-3 text-sm focus:border-blue-500 outline-none bg-white">
+                                <option value="student">دانشجو (یادگیری و نظر دادن)</option>
+                                <option value="instructor">مدرس (آپلود دوره و کسب درآمد)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <label class="flex items-start gap-x-2 text-xs cursor-pointer mt-1">
+                        <input type="checkbox" checked class="accent-blue-600 mt-0.5"> 
+                        <span class="text-zinc-600">قوانین و شرایط استفاده از BlueCode را می‌پذیرم</span>
+                    </label>
+                    
+                    <button onclick="performRegister()" 
+                            class="w-full py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-3xl text-sm mt-1 transition-colors">
+                        ایجاد حساب و ورود
+                    </button>
+                </div>
+            </div>
+        </div>
+    </dialog>
+    
+    <!-- Course Detail Modal -->
+    <dialog id="course-modal" class="modal p-0 rounded-3xl w-full max-w-5xl backdrop:bg-black/70 border-none shadow-2xl max-h-[92vh] overflow-hidden">
+        <div class="bg-white rounded-3xl overflow-hidden flex flex-col max-h-[92vh]">
+            <!-- Modal Header -->
+            <div class="px-8 pt-6 pb-4 border-b flex items-start justify-between bg-white sticky top-0 z-10">
+                <div id="modal-course-header" class="flex-1"></div>
+                <button onclick="closeCourseModal()" class="text-zinc-400 hover:text-zinc-600 p-2 -mt-1">
+                    <i class="fa-solid fa-times text-2xl"></i>
+                </button>
+            </div>
+            
+            <div class="flex-1 overflow-auto p-8" style="scrollbar-width: thin;">
+                <div class="grid lg:grid-cols-5 gap-8">
+                    <!-- Video / Player -->
+                    <div class="lg:col-span-3">
+                        <div id="video-player-area" 
+                             class="fake-video-player aspect-video rounded-3xl flex flex-col items-center justify-center text-white relative overflow-hidden cursor-pointer shadow-inner"
+                             onclick="playFakeVideo()">
+                            <div class="text-center z-10">
+                                <div class="mx-auto w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center mb-4 border border-white/40">
+                                    <i class="fa-solid fa-play text-4xl ml-1"></i>
+                                </div>
+                                <div class="font-semibold tracking-wide">پخش ویدیو دوره</div>
+                                <div class="text-xs opacity-75 mt-1">در نسخه واقعی از پلیر حرفه‌ای استفاده می‌شود</div>
+                            </div>
+                            
+                            <!-- Fake progress -->
+                            <div id="fake-progress-container" class="hidden absolute bottom-0 left-0 right-0 h-1.5 bg-white/30">
+                                <div id="fake-progress-bar" class="h-1.5 w-0 bg-cyan-400 transition-all" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4 flex items-center justify-between text-xs text-zinc-500 px-1">
+                            <div>مدت ویدیو: <span id="modal-duration"></span></div>
+                            <div class="flex items-center gap-x-4">
+                                <div><i class="fa-solid fa-download ml-1"></i> دانلود منابع</div>
+                                <div><i class="fa-solid fa-closed-captioning ml-1"></i> زیرنویس</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Info Sidebar -->
+                    <div class="lg:col-span-2 space-y-6">
+                        <div>
+                            <div class="text-xs uppercase tracking-widest text-zinc-400 mb-1.5">توضیحات دوره</div>
+                            <div id="modal-description" class="text-sm leading-relaxed text-zinc-600"></div>
+                        </div>
+                        
+                        <div class="bg-zinc-50 border border-zinc-100 rounded-2xl p-5 text-sm">
+                            <div class="flex justify-between items-center mb-4">
+                                <div class="font-semibold">اطلاعات دوره</div>
+                            </div>
+                            <div class="space-y-3 text-xs">
+                                <div class="flex justify-between"><span class="text-zinc-500">سطح</span> <span id="modal-level" class="font-medium"></span></div>
+                                <div class="flex justify-between"><span class="text-zinc-500">تعداد دانشجو</span> <span id="modal-students" class="font-medium"></span></div>
+                                <div class="flex justify-between"><span class="text-zinc-500">آخرین بروزرسانی</span> <span class="font-medium">1405 </span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Comments Section -->
+                <div class="mt-10">
+                    <div class="flex items-center justify-between mb-5">
+                        <div>
+                            <span class="font-bold text-xl">نظرات دانشجویان</span>
+                            <span id="comment-count" class="text-sm text-zinc-400 mr-3"></span>
+                        </div>
+                        
+                        <button onclick="showAddCommentForm()" 
+                                class="text-sm flex items-center gap-x-2 px-5 py-2 bg-blue-50 hover:bg-blue-100 text-blue-700 font-semibold rounded-3xl text-xs transition-colors">
+                            <i class="fa-solid fa-comment-dots"></i>
+                            <span>ثبت دیدگاه جدید</span>
+                        </button>
+                    </div>
+                    
+                    <!-- Comments List -->
+                    <div id="comments-list" class="space-y-4 max-h-[320px] overflow-auto pr-2">
+                        <!-- Populated by JS -->
+                    </div>
+                    
+                    <!-- Add Comment Form (shown conditionally) -->
+                    <div id="add-comment-form" class="hidden mt-4 bg-zinc-50 border border-zinc-100 rounded-3xl p-5">
+                        <textarea id="comment-text" rows="3" placeholder="تجربه‌تان از این دوره را بنویسید..." 
+                                  class="w-full resize-y border border-zinc-200 rounded-2xl p-4 text-sm focus:border-blue-400 outline-none"></textarea>
+                        
+                        <div class="flex justify-end gap-x-3 mt-3">
+                            <button onclick="hideAddCommentForm()" class="px-6 py-2 text-sm font-medium text-zinc-500 hover:text-zinc-700">انصراف</button>
+                            <button onclick="submitComment()" class="px-8 py-2 bg-blue-600 text-white text-sm font-semibold rounded-3xl">ارسال نظر</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </dialog>
+    
+    <!-- Upload Course Modal -->
+    <dialog id="upload-modal" class="modal p-0 rounded-3xl w-full max-w-lg backdrop:bg-black/60">
+        <div class="bg-white rounded-3xl overflow-hidden">
+            <div class="px-8 py-5 border-b flex items-center justify-between bg-zinc-50">
+                <div>
+                    <div class="font-extrabold text-xl">آپلود دوره جدید</div>
+                    <div class="text-xs text-zinc-500">پس از بررسی سریع منتشر می‌شود</div>
+                </div>
+                <button onclick="document.getElementById('upload-modal').close()" class="text-zinc-400 hover:text-zinc-600">
+                    <i class="fa-solid fa-times text-2xl"></i>
+                </button>
+            </div>
+            
+            <div class="p-8 space-y-5 text-sm">
+                <div>
+                    <label class="font-semibold text-xs text-zinc-500 block mb-1.5">عنوان دوره *</label>
+                    <input id="upload-title" type="text" placeholder="مثال: آموزش پیشرفته React با TypeScript" 
+                           class="w-full border border-zinc-200 focus:border-blue-500 rounded-2xl px-4 py-3 outline-none">
+                </div>
+                
+                <div>
+                    <label class="font-semibold text-xs text-zinc-500 block mb-1.5">توضیحات کوتاه *</label>
+                    <textarea id="upload-desc" rows="3" placeholder="این دوره شامل چه مباحثی است؟" 
+                              class="w-full border border-zinc-200 focus:border-blue-500 rounded-2xl px-4 py-3 outline-none resize-y"></textarea>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="font-semibold text-xs text-zinc-500 block mb-1.5">دسته‌بندی</label>
+                        <select id="upload-category" class="w-full border border-zinc-200 focus:border-blue-500 rounded-2xl px-4 py-3 outline-none bg-white">
+                            <option value="python">پایتون</option>
+                            <option value="javascript">جاوااسکریپت</option>
+                            <option value="react">ری‌اکت</option>
+                            <option value="ai">هوش مصنوعی</option>
+                            <option value="frontend">فرانت‌اند</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="font-semibold text-xs text-zinc-500 block mb-1.5">سطح</label>
+                        <select id="upload-level" class="w-full border border-zinc-200 focus:border-blue-500 rounded-2xl px-4 py-3 outline-none bg-white">
+                            <option value="مبتدی">مبتدی</option>
+                            <option value="متوسط">متوسط</option>
+                            <option value="پیشرفته">پیشرفته</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="font-semibold text-xs text-zinc-500 block mb-1.5">مدت زمان (ساعت)</label>
+                        <input id="upload-duration" type="number" value="8" class="w-full border border-zinc-200 focus:border-blue-500 rounded-2xl px-4 py-3 outline-none">
+                    </div>
+                    <div>
+                        <label class="font-semibold text-xs text-zinc-500 block mb-1.5">قیمت (تومان) — ۰ = رایگان</label>
+                        <input id="upload-price" type="number" value="0" class="w-full border border-zinc-200 focus:border-blue-500 rounded-2xl px-4 py-3 outline-none">
+                    </div>
+                </div>
+                
+                <!-- Thumbnail Upload -->
+                <div>
+                    <label class="font-semibold text-xs text-zinc-500 block mb-1.5">تصویر بند انگشتی (اختیاری)</label>
+                    <div class="flex items-center gap-x-4">
+                        <input type="file" id="upload-thumb" accept="image/*" class="hidden" onchange="previewThumbnail(this)">
+                        <button onclick="document.getElementById('upload-thumb').click()" 
+                                class="px-5 py-2 border border-dashed border-zinc-300 hover:border-blue-400 text-xs rounded-2xl flex items-center gap-x-2">
+                            <i class="fa-solid fa-image"></i>
+                            <span>انتخاب تصویر</span>
+                        </button>
+                        <img id="thumb-preview" class="w-14 h-10 object-cover rounded-xl border hidden" alt="پیش‌نمایش">
+                    </div>
+                </div>
+                
+                <!-- Video Upload -->
+                <div>
+                    <label class="font-semibold text-xs text-zinc-500 block mb-1.5">فایل ویدیو دوره (در نسخه واقعی)</label>
+                    <div class="border border-dashed border-zinc-300 rounded-2xl p-4 text-center text-xs">
+                        <i class="fa-solid fa-video text-xl text-zinc-400 mb-1"></i>
+                        <div>ویدیو را اینجا بکشید یا <span class="text-blue-600 cursor-pointer" onclick="document.getElementById('upload-video').click()">انتخاب کنید</span></div>
+                        <input type="file" id="upload-video" accept="video/*" class="hidden" onchange="handleVideoSelect(this)">
+                        <div id="video-file-name" class="text-emerald-600 text-xs mt-2 hidden font-medium"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="px-8 py-5 bg-zinc-50 border-t flex justify-end gap-x-3">
+                <button onclick="document.getElementById('upload-modal').close()" class="px-7 py-2.5 text-sm font-semibold text-zinc-600">انصراف</button>
+                <button onclick="submitUpload()" class="px-8 py-2.5 bg-blue-600 hover:bg-blue-700 transition-colors text-white font-bold text-sm rounded-3xl">انتشار دوره</button>
+            </div>
+        </div>
+    </dialog>
+    
+    <!-- Toast Container -->
+    <div id="toast-container" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[999]"></div>
+    
+    <script>
+        // Tailwind script configuration
+        function initializeTailwind() {
+            document.documentElement.style.setProperty('--accent', '#06b67f');
+        }
+        
+       
+        
+        let currentFilter = 'all'
+        let currentSearch = ''
+        let isLoggedIn = false
+        let currentUser = null
+        let currentCourseId = null
+        
+        // Render Courses
+        function renderCourses(filteredCourses) {
+            const grid = document.getElementById('courses-grid')
+            grid.innerHTML = ''
+            
+            if (filteredCourses.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full py-12 text-center">
+                        <i class="fa-solid fa-search text-5xl text-zinc-200 mb-4"></i>
+                        <p class="text-zinc-400">دوره‌ای با این مشخصات پیدا نشد.</p>
+                    </div>
+                `
+                return
+            }
+            
+            filteredCourses.forEach(course => {
+                const isFree = course.price === 0
+                const priceHTML = isFree 
+                    ? `<span class="inline-block bg-emerald-100 text-emerald-700 text-xs font-bold px-3.5 py-1 rounded-2xl">رایگان</span>`
+                    : `<span class="font-bold text-zinc-800">${(course.price / 1000).toLocaleString('fa-IR')} هزار تومان</span>`
+                
+                const cardHTML = `
+                    <div onclick="openCourseDetail(${course.id})" class="course-card bg-white border border-zinc-100 rounded-3xl overflow-hidden cursor-pointer group">
+                        <div class="relative">
+                            <img src="${course.thumbnail}" alt="${course.title}" class="w-full h-48 object-cover group-hover:scale-[1.03] transition-transform duration-300">
+                            <div class="absolute top-4 right-4">
+                                <span class="px-3 py-1 text-[10px] font-bold tracking-wider bg-white/95 text-zinc-700 rounded-2xl shadow-sm">${course.level}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="p-5">
+                            <div class="font-extrabold text-[15.5px] leading-tight line-clamp-2 mb-3 group-hover:text-blue-600 transition-colors">${course.title}</div>
+                            
+                            <div class="flex items-center gap-x-2.5 mb-4">
+                                <img src="https://picsum.photos/id/1005/28/28" class="w-7 h-7 rounded-full ring-1 ring-zinc-100 object-cover" alt="">
+                                <span class="text-xs text-zinc-500">${course.instructor}</span>
+                            </div>
+                            
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-x-1">
+                                    <div class="flex text-yellow-400 text-sm">
+                                        ${'★'.repeat(Math.floor(course.rating))}
+                                    </div>
+                                    <span class="text-xs font-semibold text-zinc-600">${course.rating}</span>
+                                </div>
+                                
+                                <div class="text-xs text-zinc-400">${course.students.toLocaleString('fa-IR')} دانشجو</div>
+                            </div>
+                            
+                            <div class="mt-4 pt-4 border-t flex items-center justify-between">
+                                <div>
+                                    ${priceHTML}
+                                </div>
+                                <div class="text-xs text-blue-600 font-medium flex items-center gap-x-1 group-hover:gap-x-2 transition-all">
+                                    <span>مشاهده دوره</span>
+                                    <i class="fa-solid fa-arrow-left text-xs"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+                grid.innerHTML += cardHTML
+            })
+        }
+        
+        // Filter functions
+        function filterCourses() {
+            const searchTerm = document.getElementById('search-input').value.toLowerCase().trim()
+            currentSearch = searchTerm
+            
+            let filtered = courses
+            
+            if (currentFilter !== 'all') {
+                filtered = filtered.filter(c => c.category === currentFilter)
+            }
+            
+            if (searchTerm !== '') {
+                filtered = filtered.filter(c => 
+                    c.title.toLowerCase().includes(searchTerm) || 
+                    c.instructor.toLowerCase().includes(searchTerm) ||
+                    c.description.toLowerCase().includes(searchTerm)
+                )
+            }
+            
+            renderCourses(filtered)
+        }
+        
+        function filterByCategory(category) {
+            currentFilter = category
+            
+            // Update active chip style
+            document.querySelectorAll('#categories button').forEach(btn => {
+                btn.classList.remove('active', 'bg-blue-600', 'text-white', 'border-blue-600')
+                btn.classList.add('border-zinc-200', 'bg-white')
+                
+                if (category === 'all' && btn.textContent.includes('همه')) {
+                    btn.classList.add('active', 'bg-blue-600', 'text-white', 'border-blue-600')
+                    btn.classList.remove('border-zinc-200', 'bg-white')
+                } else if (btn.textContent.includes(category === 'python' ? 'پایتون' : 
+                                               category === 'javascript' ? 'جاوااسکریپت' : 
+                                               category === 'react' ? 'ری‌اکت' : 
+                                               category === 'ai' ? 'هوش مصنوعی' : 'فرانت‌اند')) {
+                    btn.classList.add('active', 'bg-blue-600', 'text-white', 'border-blue-600')
+                    btn.classList.remove('border-zinc-200', 'bg-white')
+                }
+            })
+            
+            filterCourses()
+        }
+        
+        function showAllCourses() {
+            currentFilter = 'all'
+            currentSearch = ''
+            document.getElementById('search-input').value = ''
+            
+            document.querySelectorAll('#categories button').forEach(btn => btn.classList.remove('active', 'bg-blue-600', 'text-white', 'border-blue-600'))
+            const allBtn = document.querySelector('#categories button')
+            if (allBtn) allBtn.classList.add('active', 'bg-blue-600', 'text-white', 'border-blue-600')
+            
+            renderCourses(courses)
+        }
+        
+        // Open Course Detail
+        function openCourseDetail(courseId) {
+            const course = courses.find(c => c.id === courseId)
+            if (!course) return
+            
+            currentCourseId = courseId
+            
+            // Header
+            const headerHTML = `
+                <div>
+                    <div class="flex items-center gap-x-3 mb-1">
+                        <span class="px-3.5 py-1 text-xs font-bold bg-blue-100 text-blue-700 rounded-2xl">${course.level}</span>
+                        <span class="text-xs text-zinc-400">• ${course.duration}</span>
+                    </div>
+                    <h3 class="font-extrabold text-2xl leading-tight">${course.title}</h3>
+                    <div class="flex items-center gap-x-3 mt-2 text-sm">
+                        <div class="flex items-center gap-x-2">
+                            <img src="https://picsum.photos/id/1005/26/26" class="rounded-full ring-1 ring-zinc-100" alt="">
+                            <span class="font-medium">${course.instructor}</span>
+                        </div>
+                        <div class="flex items-center text-yellow-400">
+                            ${'★'.repeat(Math.floor(course.rating))} <span class="text-xs text-zinc-500 mr-1 font-normal">(${course.rating})</span>
+                        </div>
+                    </div>
+                </div>
+            `
+            document.getElementById('modal-course-header').innerHTML = headerHTML
+            
+            // Description
+            document.getElementById('modal-description').innerHTML = course.description
+            
+            // Sidebar info
+            document.getElementById('modal-level').innerHTML = course.level
+            document.getElementById('modal-students').innerHTML = course.students.toLocaleString('fa-IR') + ' نفر'
+            document.getElementById('modal-duration').innerHTML = course.duration
+            
+            // Comments
+            renderComments(course.comments)
+            
+            // Show modal
+            const modal = document.getElementById('course-modal')
+            modal.showModal()
+            
+            // Reset video player state
+            resetVideoPlayer()
+        }
+        
+        function closeCourseModal() {
+            const modal = document.getElementById('course-modal')
+            modal.close()
+            resetVideoPlayer()
+        }
+        
+        function resetVideoPlayer() {
+            const area = document.getElementById('video-player-area')
+            area.innerHTML = `
+                <div class="text-center z-10">
+                    <div class="mx-auto w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center mb-4 border border-white/40">
+                        <i class="fa-solid fa-play text-4xl ml-1"></i>
+                    </div>
+                    <div class="font-semibold tracking-wide">پخش ویدیو دوره</div>
+                    <div class="text-xs opacity-75 mt-1">در نسخه واقعی از پلیر حرفه‌ای استفاده می‌شود</div>
+                </div>
+            `
+            area.onclick = playFakeVideo
+        }
+        
+        function playFakeVideo() {
+            const area = document.getElementById('video-player-area')
+            area.innerHTML = `
+                <div class="absolute inset-0 flex flex-col items-center justify-center bg-black/60 text-white z-20">
+                    <div class="text-center">
+                        <i class="fa-solid fa-play text-6xl mb-3 opacity-90"></i>
+                        <div class="font-bold tracking-wider">در حال پخش ویدیو...</div>
+                        <div class="text-xs mt-1 opacity-75">این یک دمو است. در سایت واقعی ویدیو واقعی پخش می‌شود.</div>
+                        
+                        <div class="mt-6 w-72 mx-auto">
+                            <div class="h-1 bg-white/30 rounded-full overflow-hidden">
+                                <div id="progress-bar-demo" class="h-1 bg-white transition-all" style="width: 0%"></div>
+                            </div>
+                            <div class="flex justify-between text-[10px] mt-1 opacity-75">
+                                <div>۰:۰۰</div>
+                                <div id="demo-time">۱۲:۴۵</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `
+            
+            // Fake progress animation
+            setTimeout(() => {
+                const bar = document.getElementById('progress-bar-demo')
+                if (bar) {
+                    bar.style.width = '100%'
+                    bar.style.transitionDuration = '18s'
+                }
+            }, 300)
+            
+            // Auto reset after 20s for demo
+            setTimeout(() => {
+                if (!document.getElementById('course-modal').open) return
+                resetVideoPlayer()
+            }, 20000)
+        }
+        
+        // Render Comments
+        function renderComments(comments) {
+            const container = document.getElementById('comments-list')
+            container.innerHTML = ''
+            
+            document.getElementById('comment-count').textContent = `(${comments.length} دیدگاه)`
+            
+            if (comments.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-8 text-zinc-400 text-sm">
+                        هنوز دیدگاهی ثبت نشده. اولین نفر باشید!
+                    </div>
+                `
+                return
+            }
+            
+            comments.forEach(comment => {
+                const html = `
+                    <div class="flex gap-x-4 bg-white border border-zinc-100 p-4 rounded-2xl">
+                        <img src="https://picsum.photos/id/1005/36/36" class="w-9 h-9 rounded-full flex-shrink-0 ring-1 ring-zinc-100" alt="">
+                        
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="font-semibold text-sm">${comment.user}</span>
+                                    <span class="text-xs text-zinc-400 mr-2">• ${comment.date}</span>
+                                </div>
+                                <div class="flex items-center text-xs text-zinc-400">
+                                    <i class="fa-regular fa-heart ml-1"></i> 
+                                    <span>۱۲</span>
+                                </div>
+                            </div>
+                            <p class="text-sm text-zinc-600 mt-1 leading-relaxed">${comment.text}</p>
+                        </div>
+                    </div>
+                `
+                container.innerHTML += html
+            })
+        }
+        
+        function showAddCommentForm() {
+            if (!isLoggedIn) {
+                document.getElementById('course-modal').close()
+                setTimeout(() => {
+                    openAuthModal('login')
+                    showToast('برای ثبت دیدگاه ابتدا وارد حساب کاربری شوید', 'info')
+                }, 300)
+                return
+            }
+            
+            document.getElementById('add-comment-form').classList.remove('hidden')
+            document.getElementById('comment-text').focus()
+        }
+        
+        function hideAddCommentForm() {
+            document.getElementById('add-comment-form').classList.add('hidden')
+            document.getElementById('comment-text').value = ''
+        }
+        
+        function submitComment() {
+            const textarea = document.getElementById('comment-text')
+            const text = textarea.value.trim()
+            
+            if (!text || !currentCourseId) return
+            
+            const courseIndex = courses.findIndex(c => c.id === currentCourseId)
+            if (courseIndex === -1) return
+            
+            const newComment = {
+                id: Date.now(),
+                user: currentUser ? currentUser.name : 'کاربر ناشناس',
+                text: text,
+                date: 'همین الان'
+            }
+            
+            courses[courseIndex].comments.unshift(newComment)
+            
+            // Re-render comments
+            renderComments(courses[courseIndex].comments)
+            
+            // Hide form
+            hideAddCommentForm()
+            
+            // Update course card if visible
+            renderCourses(getFilteredCourses())
+            
+            showToast('دیدگاه شما با موفقیت ثبت شد. ممنون از بازخوردتان!', 'success')
+        }
+        
+        function getFilteredCourses() {
+            let filtered = courses
+            
+            if (currentFilter !== 'all') {
+                filtered = filtered.filter(c => c.category === currentFilter)
+            }
+            
+            if (currentSearch) {
+                const term = currentSearch.toLowerCase()
+                filtered = filtered.filter(c => 
+                    c.title.toLowerCase().includes(term) || 
+                    c.instructor.toLowerCase().includes(term)
+                )
+            }
+            return filtered
+        }
+        
+        // Auth Functions
+        function openAuthModal(tab = 'login') {
+            const modal = document.getElementById('auth-modal')
+            modal.showModal()
+            switchAuthTab(tab)
+        }
+        
+        function switchAuthTab(tab) {
+            const loginForm = document.getElementById('login-form')
+            const registerForm = document.getElementById('register-form')
+            const loginTab = document.getElementById('login-tab')
+            const registerTab = document.getElementById('register-tab')
+            
+            if (tab === 'login') {
+                loginForm.classList.remove('hidden')
+                registerForm.classList.add('hidden')
+                loginTab.classList.add('border-blue-600', 'text-blue-600')
+                loginTab.classList.remove('text-zinc-500')
+                registerTab.classList.remove('border-blue-600', 'text-blue-600')
+                registerTab.classList.add('text-zinc-500')
+            } else {
+                loginForm.classList.add('hidden')
+                registerForm.classList.remove('hidden')
+                registerTab.classList.add('border-blue-600', 'text-blue-600')
+                registerTab.classList.remove('text-zinc-500')
+                loginTab.classList.remove('border-blue-600', 'text-blue-600')
+                loginTab.classList.add('text-zinc-500')
+            }
+        }
+        
+        function performLogin() {
+            const email = document.getElementById('login-email').value.trim()
+            const password = document.getElementById('login-password').value.trim()
+            
+            if (!email || !password) {
+                showToast('لطفاً ایمیل و رمز عبور را وارد کنید', 'error')
+                return
+            }
+            
+            // Demo login - accept any with @bluecode.ir or demo values
+            isLoggedIn = true
+            currentUser = {
+                name: email.split('@')[0].replace('.', ' '),
+                email: email,
+                role: 'student'
+            }
+            
+            document.getElementById('auth-modal').close()
+            updateAuthUI()
+            
+            showToast(`خوش آمدید ${currentUser.name}!`, 'success')
+            
+            // If was trying to comment, reopen course modal
+            setTimeout(() => {
+                if (currentCourseId) {
+                    const modal = document.getElementById('course-modal')
+                    if (!modal.open) {
+                        openCourseDetail(currentCourseId)
+                    }
+                }
+            }, 800)
+        }
+        
+        function performRegister() {
+            const name = document.getElementById('reg-name').value.trim()
+            const email = document.getElementById('reg-email').value.trim()
+            const pass = document.getElementById('reg-password').value
+            const passConfirm = document.getElementById('reg-password-confirm').value
+            const role = document.getElementById('reg-role').value
+            
+            if (!name || !email || !pass) {
+                showToast('لطفاً تمام فیلدها را پر کنید', 'error')
+                return
+            }
+            
+            if (pass !== passConfirm) {
+                showToast('رمز عبور و تکرار آن مطابقت ندارند', 'error')
+                return
+            }
+            
+            if (pass.length < 6) {
+                showToast('رمز عبور باید حداقل ۶ کاراکتر باشد', 'error')
+                return
+            }
+            
+            isLoggedIn = true
+            currentUser = {
+                name: name,
+                email: email,
+                role: role
+            }
+            
+            document.getElementById('auth-modal').close()
+            updateAuthUI()
+            
+            const welcomeMsg = role === 'instructor' 
+                ? `تبریک! حساب مدرس شما ساخته شد. حالا می‌توانید دوره آپلود کنید.` 
+                : `حساب شما با موفقیت ساخته شد. خوش آمدید!`
+            
+            showToast(welcomeMsg, 'success')
+            
+            // If instructor, suggest upload
+            if (role === 'instructor') {
+                setTimeout(() => {
+                    showToast('برای آپلود اولین دوره‌تان روی دکمه "تدریس کن" کلیک کنید', 'info')
+                }, 2200)
+            }
+        }
+        
+        function quickSocialLogin(provider) {
+            document.getElementById('auth-modal').close()
+            
+            isLoggedIn = true
+            currentUser = {
+                name: provider === 'google' ? 'کاربر گوگل' : 'کاربر گیت‌هاب',
+                email: provider === 'google' ? 'user@gmail.com' : 'user@github.com',
+                role: 'student'
+            }
+            
+            updateAuthUI()
+            showToast(`با موفقیت با ${provider} وارد شدید`, 'success')
+        }
+        
+        function updateAuthUI() {
+            const authSection = document.getElementById('auth-section')
+            
+            if (isLoggedIn && currentUser) {
+                authSection.innerHTML = `
+                    <div class="flex items-center gap-x-3">
+                        <button onclick="showUploadModal()" 
+                                class="hidden md:flex items-center gap-x-2 px-5 py-2 text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white rounded-3xl transition-colors">
+                            <i class="fa-solid fa-upload"></i>
+                            <span>آپلود دوره</span>
+                        </button>
+                        
+                        <div class="flex items-center gap-x-2.5 bg-zinc-100 rounded-3xl pl-2 pr-4 py-1.5">
+                            <img src="https://picsum.photos/id/1005/30/30" class="w-8 h-8 rounded-full ring-2 ring-white object-cover" alt="">
+                            <div class="text-xs leading-none">
+                                <div class="font-semibold">${currentUser.name}</div>
+                                <div class="text-[10px] text-emerald-600">${currentUser.role === 'instructor' ? 'مدرس' : 'دانشجو'}</div>
+                            </div>
+                        </div>
+                        
+                        <button onclick="logout()" class="text-xs px-3 py-2 text-zinc-400 hover:text-red-500 transition-colors">
+                            <i class="fa-solid fa-sign-out-alt"></i>
+                        </button>
+                    </div>
+                `
+            } else {
+                authSection.innerHTML = `
+                    <button onclick="openAuthModal('login')" 
+                            class="px-5 py-2 text-sm font-semibold text-blue-600 hover:bg-blue-50 rounded-3xl transition-colors border border-blue-200">
+                        ورود
+                    </button>
+                    <button onclick="openAuthModal('register')" 
+                            class="px-6 py-2 text-sm font-semibold bg-blue-600 hover:bg-blue-700 text-white rounded-3xl transition-all shadow-md shadow-blue-500/30">
+                        ثبت‌نام
+                    </button>
+                `
+            }
+        }
+        
+        function logout() {
+            isLoggedIn = false
+            currentUser = null
+            updateAuthUI()
+            showToast('از حساب خارج شدید', 'info')
+        }
+        
+        function showUploadModal() {
+            if (!isLoggedIn) {
+                openAuthModal('login')
+                showToast('برای آپلود دوره ابتدا وارد شوید', 'info')
+                return
+            }
+            
+            // If not instructor, still allow for demo but warn
+            if (currentUser && currentUser.role !== 'instructor') {
+                showToast('در نسخه واقعی فقط مدرسین تأیید شده می‌توانند دوره آپلود کنند. در دمو باز شد!', 'info')
+            }
+            
+            document.getElementById('upload-modal').showModal()
+        }
+        
+        function previewThumbnail(input) {
+            const preview = document.getElementById('thumb-preview')
+            if (input.files && input.files[0]) {
+                const reader = new FileReader()
+                reader.onload = e => {
+                    preview.src = e.target.result
+                    preview.classList.remove('hidden')
+                }
+                reader.readAsDataURL(input.files[0])
+            }
+        }
+        
+        function handleVideoSelect(input) {
+            const nameDiv = document.getElementById('video-file-name')
+            if (input.files && input.files[0]) {
+                nameDiv.textContent = `فایل انتخاب شد: ${input.files[0].name}`
+                nameDiv.classList.remove('hidden')
+            }
+        }
+        
+        function submitUpload() {
+            const title = document.getElementById('upload-title').value.trim()
+            const desc = document.getElementById('upload-desc').value.trim()
+            const category = document.getElementById('upload-category').value
+            const level = document.getElementById('upload-level').value
+            const duration = document.getElementById('upload-duration').value + ' ساعت'
+            const price = parseInt(document.getElementById('upload-price').value) || 0
+            
+            if (!title || !desc) {
+                showToast('عنوان و توضیحات الزامی هستند', 'error')
+                return
+            }
+            
+            const newCourse = {
+                id: Date.now(),
+                title: title,
+                instructor: currentUser ? currentUser.name : 'مدرس جدید',
+                category: category,
+                level: level,
+                duration: duration,
+                rating: 5.0,
+                students: 0,
+                price: price,
+                thumbnail: "https://picsum.photos/id/1018/600/340", // default nice image
+                description: desc,
+                comments: []
+            }
+            
+            courses.unshift(newCourse)
+            
+            // Close modal
+            document.getElementById('upload-modal').close()
+            
+            // Reset form
+            document.getElementById('upload-title').value = ''
+            document.getElementById('upload-desc').value = ''
+            document.getElementById('thumb-preview').classList.add('hidden')
+            document.getElementById('video-file-name').classList.add('hidden')
+            
+            // Re-render
+            renderCourses(getFilteredCourses())
+            
+            showToast('دوره شما با موفقیت آپلود شد! پس از بررسی کوتاه منتشر خواهد شد.', 'success')
+            
+            // Auto open the new course detail after 1.5s
+            setTimeout(() => {
+                openCourseDetail(newCourse.id)
+            }, 1600)
+        }
+        
+        // Toast notification
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toast-container')
+            
+            let bg = 'bg-emerald-600'
+            let icon = 'fa-check-circle'
+            
+            if (type === 'error') {
+                bg = 'bg-red-600'
+                icon = 'fa-exclamation-circle'
+            } else if (type === 'info') {
+                bg = 'bg-blue-600'
+                icon = 'fa-info-circle'
+            }
+            
+            const toast = document.createElement('div')
+            toast.className = `flex items-center gap-x-3 ${bg} text-white px-6 py-3.5 rounded-3xl shadow-2xl text-sm max-w-xs mx-auto`
+            toast.innerHTML = `
+                <i class="fa-solid ${icon} text-lg"></i>
+                <span>${message}</span>
+            `
+            
+            container.appendChild(toast)
+            
+            setTimeout(() => {
+                toast.style.transition = 'all 0.3s ease'
+                toast.style.opacity = '0'
+                setTimeout(() => toast.remove(), 200)
+            }, 3800)
+        }
+        
+        // Navbar scroll effect
+        function initNavbar() {
+            const navbar = document.getElementById('navbar')
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 30) {
+                    navbar.classList.add('nav-scrolled', 'bg-white/95', 'backdrop-blur-lg')
+                } else {
+                    navbar.classList.remove('nav-scrolled', 'bg-white/95', 'backdrop-blur-lg')
+                }
+            })
+        }
+        
+        // Nav search sync
+        function initNavSearch() {
+            const navSearch = document.getElementById('nav-search')
+            const mainSearch = document.getElementById('search-input')
+            
+            if (navSearch && mainSearch) {
+                navSearch.addEventListener('input', (e) => {
+                    mainSearch.value = e.target.value
+                    filterCourses()
+                    
+                    // Scroll to courses if user starts typing in nav
+                    if (e.target.value.length > 1) {
+                        document.getElementById('courses').scrollIntoView({ behavior: 'smooth', block: 'start' })
+                    }
+                })
+                
+                // Also sync back
+                mainSearch.addEventListener('input', (e) => {
+                    navSearch.value = e.target.value
+                })
+            }
+        }
+        
+        // Initialize everything
+        function initializeApp() {
+            initializeTailwind()
+            
+            // Render initial courses
+            renderCourses(courses)
+            
+            // Navbar effects
+            initNavbar()
+            initNavSearch()
+            
+            // Initial auth state (demo logged out)
+            updateAuthUI()
+            
+            // Make first filter chip active
+            const firstChip = document.querySelector('#categories button')
+            if (firstChip) firstChip.classList.add('active', 'bg-blue-600', 'text-white', 'border-blue-600')
+            
+            // Demo: Show welcome toast after 6 seconds if not logged in
+            setTimeout(() => {
+                if (!isLoggedIn) {
+                    // showToast('برای تست کامل، روی "ثبت‌نام" کلیک کنید و یک حساب بسازید', 'info')
+                }
+            }, 6500)
+            
+            // Bonus: Allow pressing Enter in search to focus courses
+            const searchInput = document.getElementById('search-input')
+            if (searchInput) {
+                searchInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        document.getElementById('courses').scrollIntoView({ behavior: 'smooth' })
+                    }
+                })
+            }
+            
+            // Keyboard shortcut hint (optional)
+            console.log('%c[BlueCode] پروتوتایپ آماده است. برای تست: ثبت‌نام → آپلود دوره → کامنت', 'color:#64748b')
+            
+            // Make sure initial filter is all
+            currentFilter = 'all'
+        }
+        
+        // Boot app
+        window.onload = initializeApp
+    </script>
+</body>
+</html>

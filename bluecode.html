@@ -1,0 +1,877 @@
+
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#040D1A;--bg2:#0B1829;--bg3:#0D1E33;--bg4:#061224;
+  --blue:#00A8FF;--blue2:#0077CC;--blue3:#7DD3FC;
+  --text:#E0EEFF;--text2:#7A99B5;--text3:#4D7A9E;--text4:#2A4A66;
+  --border:rgba(0,168,255,0.15);--border2:rgba(0,168,255,0.25);--border3:rgba(0,168,255,0.4);
+  --gold:#F0A500;--green:#28CA41;--red:#FF5F57;
+}
+body,html{font-family:'Vazirmatn',sans-serif;direction:rtl;background:var(--bg);color:var(--text);min-height:100vh}
+.page{display:none;min-height:100vh;flex-direction:column}
+.page.active{display:flex}
+
+.nav{display:flex;justify-content:space-between;align-items:center;padding:14px 28px;background:rgba(4,13,26,0.97);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:50}
+.logo{display:flex;align-items:center;gap:8px;cursor:pointer}
+.logo-icon{width:32px;height:32px;background:#0055AA;border-radius:7px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:#fff}
+.logo-text{font-size:18px;font-weight:900;color:var(--blue)}
+.nav-links{display:flex;gap:20px;list-style:none}
+.nav-links a{text-decoration:none;color:var(--text2);font-size:13px;cursor:pointer;transition:color .2s}
+.nav-links a:hover{color:var(--blue)}
+.nav-right{display:flex;gap:8px;align-items:center}
+.user-chip{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text2);cursor:pointer}
+.avatar{width:30px;height:30px;border-radius:50%;background:var(--blue2);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff}
+.btn-sm{padding:7px 16px;border-radius:7px;font-family:'Vazirmatn',sans-serif;font-size:12px;font-weight:600;cursor:pointer;border:none;transition:all .2s}
+.btn-outline-sm{padding:7px 16px;border-radius:7px;font-family:'Vazirmatn',sans-serif;font-size:12px;font-weight:600;cursor:pointer;background:transparent;border:1px solid var(--border2);color:var(--blue);transition:all .2s}
+.btn-outline-sm:hover{background:rgba(0,168,255,0.08)}
+.btn-primary-sm{background:var(--blue2);color:#fff}
+.btn-primary-sm:hover{background:var(--blue)}
+
+/* ── AUTH PAGES ── */
+.auth-wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 20px;background:var(--bg)}
+.auth-card{background:var(--bg2);border:1px solid var(--border2);border-radius:16px;padding:36px 32px;width:100%;max-width:420px}
+.auth-logo{text-align:center;margin-bottom:24px}
+.auth-logo .logo-icon{width:48px;height:48px;font-size:16px;margin:0 auto 10px}
+.auth-logo h2{font-size:20px;font-weight:900;color:#fff}
+.auth-logo p{font-size:13px;color:var(--text3);margin-top:4px}
+.tabs{display:flex;background:var(--bg3);border-radius:10px;padding:4px;margin-bottom:24px}
+.tab-btn{flex:1;padding:9px;border:none;background:transparent;font-family:'Vazirmatn',sans-serif;font-size:13px;font-weight:600;color:var(--text3);cursor:pointer;border-radius:7px;transition:all .2s}
+.tab-btn.active{background:var(--blue2);color:#fff}
+.form-group{margin-bottom:14px}
+.form-label{display:block;font-size:12px;color:var(--text3);margin-bottom:6px;font-weight:600}
+.form-input{width:100%;padding:11px 14px;background:var(--bg4);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:'Vazirmatn',sans-serif;font-size:13px;outline:none;transition:border-color .2s}
+.form-input:focus{border-color:var(--border3)}
+.form-input::placeholder{color:var(--text4)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-submit{width:100%;padding:12px;margin-top:6px;background:var(--blue2);border:none;border-radius:8px;color:#fff;font-family:'Vazirmatn',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:background .2s}
+.form-submit:hover{background:var(--blue)}
+.divider{display:flex;align-items:center;gap:12px;margin:18px 0;color:var(--text4);font-size:12px}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--border)}
+.oauth-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.oauth-btn{padding:9px;background:var(--bg4);border:1px solid var(--border);border-radius:8px;color:var(--text2);font-family:'Vazirmatn',sans-serif;font-size:12px;cursor:pointer;text-align:center;transition:all .2s}
+.oauth-btn:hover{border-color:var(--border2);color:var(--blue)}
+.auth-switch{text-align:center;margin-top:18px;font-size:12px;color:var(--text4)}
+.auth-switch span{color:var(--blue);cursor:pointer;font-weight:600}
+.plan-select{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.plan-card{padding:12px;border:1px solid var(--border);border-radius:10px;cursor:pointer;transition:all .2s;text-align:center}
+.plan-card.selected{border-color:var(--blue);background:rgba(0,168,255,0.06)}
+.plan-card h4{font-size:14px;font-weight:700;color:#fff;margin-bottom:4px}
+.plan-card p{font-size:11px;color:var(--text3)}
+.plan-price{font-size:16px;font-weight:900;color:var(--blue);margin-top:6px}
+.alert{padding:10px 14px;border-radius:8px;font-size:12px;margin-bottom:14px}
+.alert-err{background:rgba(255,95,87,0.1);border:1px solid rgba(255,95,87,0.3);color:#FF8A84}
+.alert-ok{background:rgba(40,202,65,0.1);border:1px solid rgba(40,202,65,0.3);color:#4AE060}
+
+/* ── COURSES PAGE ── */
+.courses-page{flex:1;background:var(--bg)}
+.search-bar-wrap{background:var(--bg2);border-bottom:1px solid var(--border);padding:20px 28px}
+.search-row{display:flex;gap:12px;align-items:center;max-width:900px;margin:0 auto}
+.search-box{flex:1;display:flex;align-items:center;gap:10px;background:var(--bg4);border:1px solid var(--border2);border-radius:10px;padding:0 14px}
+.search-box i{color:var(--text3);font-size:18px}
+.search-box input{flex:1;background:transparent;border:none;outline:none;color:var(--text);font-family:'Vazirmatn',sans-serif;font-size:14px;padding:11px 0}
+.search-box input::placeholder{color:var(--text4)}
+.filter-row{display:flex;gap:8px;flex-wrap:wrap;max-width:900px;margin:12px auto 0}
+.filter-chip{padding:6px 14px;border-radius:100px;font-size:12px;font-weight:600;cursor:pointer;border:1px solid var(--border);color:var(--text3);background:transparent;font-family:'Vazirmatn',sans-serif;transition:all .2s}
+.filter-chip:hover,.filter-chip.active{border-color:var(--blue);color:var(--blue);background:rgba(0,168,255,0.08)}
+.filter-select{padding:7px 12px;background:var(--bg4);border:1px solid var(--border);border-radius:8px;color:var(--text2);font-family:'Vazirmatn',sans-serif;font-size:12px;outline:none;cursor:pointer}
+.courses-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:28px;max-width:960px;margin:0 auto}
+.course-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;overflow:hidden;cursor:pointer;transition:all .25s}
+.course-card:hover{border-color:var(--border3);transform:translateY(-3px)}
+.course-thumb{height:100px;display:flex;align-items:center;justify-content:center;font-size:38px;position:relative;background:var(--bg3)}
+.course-badge-wrap{position:absolute;top:8px;left:8px;display:flex;gap:5px}
+.badge-lang{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;padding:3px 7px;border-radius:4px;background:rgba(0,168,255,0.15);border:1px solid rgba(0,168,255,0.3);color:var(--blue3)}
+.badge-free{font-size:9px;font-weight:700;padding:3px 7px;border-radius:4px;background:rgba(40,202,65,0.15);border:1px solid rgba(40,202,65,0.3);color:#4AE060}
+.badge-paid{font-size:9px;font-weight:700;padding:3px 7px;border-radius:4px;background:rgba(240,165,0,0.15);border:1px solid rgba(240,165,0,0.3);color:var(--gold)}
+.course-body{padding:14px}
+.course-title{font-size:13px;font-weight:700;color:#D0E8FF;margin-bottom:5px}
+.course-meta{display:flex;gap:10px;font-size:11px;color:var(--text3)}
+.course-footer{padding:10px 14px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.level-badge{font-size:10px;padding:3px 9px;border-radius:100px;background:rgba(0,168,255,0.08);color:#4D9ACC;border:1px solid rgba(0,168,255,0.12)}
+.rating{font-size:11px;color:var(--gold);font-weight:700}
+.price-tag{font-size:12px;font-weight:700;color:var(--gold)}
+.price-free{font-size:12px;font-weight:700;color:#4AE060}
+.no-results{text-align:center;padding:60px 20px;color:var(--text3)}
+
+/* ── COURSE DETAIL PAGE ── */
+.course-detail{flex:1;background:var(--bg)}
+.detail-hero{background:var(--bg2);border-bottom:1px solid var(--border);padding:32px 28px}
+.detail-hero-inner{max-width:860px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:32px;align-items:start}
+.back-btn{display:inline-flex;align-items:center;gap:6px;color:var(--text3);font-size:13px;cursor:pointer;margin-bottom:16px;transition:color .2s}
+.back-btn:hover{color:var(--blue)}
+.detail-title{font-size:26px;font-weight:900;color:#fff;margin-bottom:10px;letter-spacing:-.5px}
+.detail-desc{font-size:14px;color:var(--text2);line-height:1.7;margin-bottom:16px}
+.detail-meta{display:flex;gap:16px;font-size:12px;color:var(--text3);flex-wrap:wrap}
+.detail-meta span{display:flex;align-items:center;gap:5px}
+.detail-sidebar{background:var(--bg3);border:1px solid var(--border2);border-radius:14px;padding:22px;width:240px;flex-shrink:0}
+.detail-price{font-size:28px;font-weight:900;color:var(--blue);margin-bottom:4px}
+.detail-price-free{font-size:28px;font-weight:900;color:#4AE060;margin-bottom:4px}
+.detail-price-sub{font-size:11px;color:var(--text3);margin-bottom:16px}
+.enroll-btn{width:100%;padding:12px;border:none;border-radius:9px;font-family:'Vazirmatn',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;margin-bottom:10px}
+.enroll-primary{background:var(--blue2);color:#fff}
+.enroll-primary:hover{background:var(--blue)}
+.enroll-enrolled{background:rgba(40,202,65,0.15);border:1px solid rgba(40,202,65,0.4);color:#4AE060}
+.feature-list{list-style:none;font-size:12px;color:var(--text2)}
+.feature-list li{display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid var(--border)}
+.feature-list li:last-child{border-bottom:none}
+.detail-content{max-width:860px;margin:0 auto;padding:28px}
+.syllabus{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.syllabus-item{display:flex;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .2s}
+.syllabus-item:last-child{border-bottom:none}
+.syllabus-item:hover{background:rgba(0,168,255,0.04)}
+.syllabus-item.done{opacity:.7}
+.lesson-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text4);width:28px;flex-shrink:0}
+.lesson-title{flex:1;font-size:13px;color:var(--text)}
+.lesson-dur{font-size:11px;color:var(--text3)}
+.lesson-lock{font-size:14px;color:var(--text4)}
+.lesson-check{font-size:14px;color:#4AE060}
+.progress-wrap{margin-bottom:24px}
+.progress-label{display:flex;justify-content:space-between;font-size:12px;color:var(--text3);margin-bottom:8px}
+.progress-bar{height:6px;background:var(--bg3);border-radius:100px;overflow:hidden}
+.progress-fill{height:100%;background:var(--blue2);border-radius:100px;transition:width .5s}
+
+/* ── CERTIFICATE ── */
+.cert-page{flex:1;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:32px}
+.cert-wrap{background:var(--bg2);border:1px solid var(--border3);border-radius:20px;padding:40px;max-width:640px;width:100%;text-align:center}
+.cert-header{margin-bottom:24px}
+.cert-logo-row{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:16px}
+.cert-badge{font-size:11px;padding:4px 14px;border-radius:100px;background:rgba(0,168,255,0.1);border:1px solid var(--border2);color:var(--blue3);font-weight:600;display:inline-block;margin-bottom:12px}
+.cert-presents{font-size:13px;color:var(--text3);margin-bottom:6px}
+.cert-recipient{font-size:32px;font-weight:900;color:#fff;margin-bottom:8px;font-family:'Vazirmatn',sans-serif}
+.cert-body{font-size:14px;color:var(--text2);line-height:1.8;margin-bottom:20px}
+.cert-course{font-size:18px;font-weight:900;color:var(--blue);margin-bottom:4px}
+.cert-divider{height:1px;background:var(--border);margin:20px 0}
+.cert-footer{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;text-align:center}
+.cert-field{font-size:11px;color:var(--text3)}
+.cert-field span{display:block;font-weight:700;color:var(--text);font-size:13px;margin-top:3px}
+.cert-actions{display:flex;gap:10px;justify-content:center;margin-top:24px;flex-wrap:wrap}
+.cert-btn{padding:11px 22px;border-radius:9px;font-family:'Vazirmatn',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;border:none}
+.cert-btn-primary{background:var(--blue2);color:#fff}
+.cert-btn-primary:hover{background:var(--blue)}
+.cert-btn-outline{background:transparent;border:1px solid var(--border2);color:var(--text2)}
+.cert-btn-outline:hover{border-color:var(--blue);color:var(--blue)}
+.cert-id{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text4);margin-top:12px}
+.cert-stars{font-size:22px;letter-spacing:2px;margin:8px 0;color:var(--gold)}
+
+/* ── DASHBOARD ── */
+.dashboard{flex:1;background:var(--bg)}
+.dash-inner{max-width:900px;margin:0 auto;padding:28px}
+.dash-header{margin-bottom:28px}
+.dash-header h2{font-size:22px;font-weight:900;color:#fff;margin-bottom:4px}
+.dash-header p{font-size:13px;color:var(--text3)}
+.dash-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:28px}
+.dash-stat{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:18px;text-align:center}
+.dash-stat-num{font-size:28px;font-weight:900;color:var(--blue);font-family:'JetBrains Mono',monospace}
+.dash-stat-label{font-size:12px;color:var(--text3);margin-top:4px}
+.enrolled-list{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.enrolled-item{display:flex;align-items:center;gap:14px;padding:16px 18px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .2s}
+.enrolled-item:last-child{border-bottom:none}
+.enrolled-item:hover{background:rgba(0,168,255,0.04)}
+.enrolled-icon{font-size:26px;width:44px;height:44px;background:var(--bg3);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.enrolled-info{flex:1}
+.enrolled-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px}
+.enrolled-prog{font-size:11px;color:var(--text3)}
+.enrolled-bar{width:100%;height:4px;background:var(--bg3);border-radius:100px;margin-top:6px;overflow:hidden}
+.enrolled-fill{height:100%;background:var(--blue2);border-radius:100px}
+.enrolled-status{font-size:11px;font-weight:700;padding:4px 10px;border-radius:100px}
+.status-done{background:rgba(40,202,65,0.12);color:#4AE060;border:1px solid rgba(40,202,65,0.25)}
+.status-prog{background:rgba(0,168,255,0.1);color:var(--blue);border:1px solid var(--border2)}
+
+.toast{display:none;position:fixed;bottom:20px;right:20px;background:var(--bg3);border:1px solid var(--border2);border-radius:10px;padding:12px 18px;font-size:13px;color:var(--text);z-index:999;direction:rtl;font-family:'Vazirmatn',sans-serif}
+.toast.show{display:block;animation:slideUp .3s ease}
+@keyframes slideUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+@media (max-width: 992px){
+
+  .courses-grid{
+    grid-template-columns:repeat(2,1fr);
+    padding:20px;
+  }
+
+  .detail-hero-inner{
+    grid-template-columns:1fr;
+  }
+
+  .detail-sidebar{
+    width:100%;
+  }
+
+  .dash-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+@media (max-width: 768px){
+
+  .nav{
+    padding:12px 16px;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+
+  .nav-links{
+    width:100%;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+
+  .nav-right{
+    width:100%;
+    justify-content:center;
+  }
+
+  .logo-text{
+    font-size:16px;
+  }
+
+  .search-bar-wrap{
+    padding:16px;
+  }
+
+  .search-row{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .filter-select{
+    width:100%;
+  }
+
+  .courses-grid{
+    grid-template-columns:1fr;
+    padding:16px;
+  }
+
+  .course-title{
+    font-size:14px;
+  }
+
+  .detail-hero{
+    padding:20px 16px;
+  }
+
+  .detail-title{
+    font-size:22px;
+    line-height:1.5;
+  }
+
+  .detail-content{
+    padding:16px;
+  }
+
+  .syllabus-item{
+    padding:12px;
+  }
+
+  .cert-wrap{
+    padding:24px 16px;
+  }
+
+  .cert-recipient{
+    font-size:24px;
+  }
+
+  .cert-footer{
+    grid-template-columns:1fr;
+    gap:12px;
+  }
+
+  .form-row{
+    grid-template-columns:1fr;
+  }
+
+  .oauth-row{
+    grid-template-columns:1fr;
+  }
+
+  .plan-select{
+    grid-template-columns:1fr;
+  }
+
+  .dash-inner{
+    padding:16px;
+  }
+
+  .enrolled-item{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .enrolled-status{
+    align-self:flex-end;
+  }
+}
+
+@media (max-width: 480px){
+
+  .auth-card{
+    padding:24px 16px;
+  }
+
+  .course-footer{
+    flex-direction:column;
+    gap:8px;
+    align-items:flex-start;
+  }
+
+  .detail-title{
+    font-size:18px;
+  }
+
+  .detail-meta{
+    gap:10px;
+  }
+
+  .detail-price,
+  .detail-price-free{
+    font-size:24px;
+  }
+
+  .cert-actions{
+    flex-direction:column;
+  }
+
+  .cert-btn{
+    width:100%;
+  }
+
+  .btn-sm,
+  .btn-outline-sm{
+    width:100%;
+  }
+
+  .toast{
+    right:10px;
+    left:10px;
+    width:auto;
+  }
+}
+</style>
+
+<div id="toast" class="toast"></div>
+
+<!-- NAV -->
+<nav class="nav" id="main-nav">
+  <div class="logo" onclick="goTo('courses')">
+    <div class="logo-icon">&lt;/&gt;</div>
+    <span class="logo-text">BlueCode</span>
+  </div>
+  <ul class="nav-links">
+    <li><a onclick="goTo('courses')">دوره‌ها</a></li>
+    <li><a onclick="goTo('dashboard')">داشبورد</a></li>
+  </ul>
+  <div class="nav-right" id="nav-right">
+    <button class="btn-outline-sm" onclick="goTo('login')">ورود</button>
+    <button class="btn-sm btn-primary-sm" onclick="goTo('register')">ثبت‌نام</button>
+  </div>
+</nav>
+
+<!-- ══ PAGE: LOGIN ══ -->
+<div id="page-login" class="page">
+  <div class="auth-wrap">
+    <div class="auth-card">
+      <div class="auth-logo">
+        <div class="logo-icon">&lt;/&gt;</div>
+        <h2>ورود به BlueCode</h2>
+        <p>به یادگیری ادامه بده</p>
+      </div>
+      <div id="login-alert" class="alert alert-err" style="display:none"></div>
+      <div class="form-group">
+        <label class="form-label">ایمیل</label>
+        <input class="form-input" id="login-email" type="email" placeholder="you@email.com" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">رمز عبور</label>
+        <input class="form-input" id="login-pass" type="password" placeholder="••••••••" />
+      </div>
+      <button class="form-submit" onclick="doLogin()">ورود به حساب</button>
+      <div class="divider">یا</div>
+      <div class="oauth-row">
+        <button class="oauth-btn" onclick="doOAuth('Google')">Google</button>
+        <button class="oauth-btn" onclick="doOAuth('GitHub')">GitHub</button>
+      </div>
+      <div class="auth-switch">حساب ندارید؟ <span onclick="goTo('register')">ثبت‌نام رایگان</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PAGE: REGISTER ══ -->
+<div id="page-register" class="page">
+  <div class="auth-wrap">
+    <div class="auth-card">
+      <div class="auth-logo">
+        <div class="logo-icon">&lt;/&gt;</div>
+        <h2>ثبت‌نام در BlueCode</h2>
+        <p>سفر کدنویسی خودت رو شروع کن</p>
+      </div>
+      <div id="reg-alert" class="alert alert-err" style="display:none"></div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">نام</label>
+          <input class="form-input" id="reg-fname" placeholder="علی" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">نام خانوادگی</label>
+          <input class="form-input" id="reg-lname" placeholder="احمدی" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">ایمیل</label>
+        <input class="form-input" id="reg-email" type="email" placeholder="you@email.com" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">رمز عبور (حداقل ۸ کاراکتر)</label>
+        <input class="form-input" id="reg-pass" type="password" placeholder="••••••••" />
+      </div>
+      <div style="margin-bottom:14px">
+        <label class="form-label">پلن عضویت</label>
+        <div class="plan-select">
+          <div class="plan-card selected" id="plan-free" onclick="selectPlan('free')">
+            <h4>رایگان</h4>
+            <p>دوره‌های رایگان</p>
+            <div class="plan-price">۰ تومان</div>
+          </div>
+          
+        </div>
+      </div>
+      <button class="form-submit" onclick="doRegister()">ساخت حساب</button>
+      <div class="divider">یا</div>
+      <div class="oauth-row">
+        <button class="oauth-btn" onclick="doOAuth('Google')">Google</button>
+        <button class="oauth-btn" onclick="doOAuth('GitHub')">GitHub</button>
+      </div>
+      <div class="auth-switch">حساب دارید؟ <span onclick="goTo('login')">ورود</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PAGE: COURSES ══ -->
+<div id="page-courses" class="page">
+  <div class="courses-page">
+    <div class="search-bar-wrap">
+      <div class="search-row">
+        <div class="search-box">
+          <i class="ti ti-search" aria-hidden="true"></i>
+          <input type="text" id="search-input" placeholder="جستجو در دوره‌ها..." oninput="filterCourses()" />
+        </div>
+        <select class="filter-select" id="sort-select" onchange="filterCourses()">
+          <option value="all">مرتب‌سازی</option>
+          <option value="rating">بهترین امتیاز</option>
+          <option value="newest">جدیدترین</option>
+          <option value="free">رایگان اول</option>
+        </select>
+      </div>
+      <div class="filter-row">
+        <button class="filter-chip active" onclick="setCategory(this,'all')">همه دوره‌ها</button>
+        <button class="filter-chip" onclick="setCategory(this,'frontend')">فرانت‌اند</button>
+        <button class="filter-chip" onclick="setCategory(this,'backend')">بک‌اند</button>
+        <button class="filter-chip" onclick="setCategory(this,'mobile')">موبایل</button>
+        <button class="filter-chip" onclick="setCategory(this,'data')">داده و هوش مصنوعی</button>
+        <button class="filter-chip" onclick="setCategory(this,'devops')">DevOps</button>
+        <button class="filter-chip" onclick="setPriceFilter(this,'free')">فقط رایگان</button>
+        <button class="filter-chip" onclick="setPriceFilter(this,'paid')">فقط پولی</button>
+      </div>
+    </div>
+    <div id="courses-container" class="courses-grid"></div>
+  </div>
+</div>
+
+<!-- ══ PAGE: COURSE DETAIL ══ -->
+<div id="page-detail" class="page">
+  <div class="course-detail" id="detail-content"></div>
+</div>
+
+<!-- ══ PAGE: DASHBOARD ══ -->
+<div id="page-dashboard" class="page">
+  <div class="dashboard" id="dashboard-content"></div>
+</div>
+
+<!-- ══ PAGE: CERTIFICATE ══ -->
+<div id="page-cert" class="page">
+  <div class="cert-page" id="cert-content"></div>
+</div>
+
+<script>
+const COURSES = [
+  {id:1,title:'پایتون از صفر تا استخدام',icon:'🐍',lang:'Python',cat:'backend',lessons:64,hours:18,rating:4.9,students:3240,level:'مقدماتی تا پیشرفته',free:true,price:0,desc:'کامل‌ترین دوره پایتون فارسی — از متغیر تا ساخت API واقعی با FastAPI.',topics:['متغیرها و انواع داده','توابع و ماژول‌ها','OOP','کار با فایل','FastAPI','پروژه نهایی']},
+  {id:2,title:'ری‌اکت جی‌اس پیشرفته',icon:'⚛️',lang:'React',cat:'frontend',lessons:48,hours:14,rating:4.8,students:2100,level:'متوسط',free:false,price:189000,desc:'از hooks پیشرفته تا بهینه‌سازی و تست — برای توسعه‌دهندگان جدی.',topics:['useState / useEffect','Context API','React Query','Testing','Performance']},
+  {id:3,title:'برنامه‌نویسی با Go',icon:'🐹',lang:'Go',cat:'backend',lessons:36,hours:11,rating:4.7,students:980,level:'متوسط تا پیشرفته',free:false,price:149000,desc:'زبان Go را از پایه یاد بگیر و سرویس‌های سریع و مقیاس‌پذیر بساز.',topics:['Goroutines','Channels','HTTP Server','GORM','Docker']},
+  {id:4,title:'فلاتر — اپ iOS و Android',icon:'📱',lang:'Flutter',cat:'mobile',lessons:52,hours:16,rating:4.8,students:1560,level:'مقدماتی',free:false,price:229000,desc:'یک کدبیس، دو پلتفرم. اپ واقعی بساز و روی استور منتشر کن.',topics:['Widget tree','State management','Firebase','Animations','Publish']},
+  {id:5,title:'یادگیری ماشین با Python',icon:'🤖',lang:'Python',cat:'data',lessons:70,hours:22,rating:4.9,students:4200,level:'متوسط',free:false,price:299000,desc:'scikit-learn، Pandas، و PyTorch — از مفاهیم تا مدل‌های واقعی.',topics:['NumPy / Pandas','scikit-learn','Neural Networks','PyTorch','Deployment']},
+  {id:6,title:'HTML & CSS مقدماتی',icon:'🌐',lang:'HTML/CSS',cat:'frontend',lessons:28,hours:8,rating:4.6,students:5800,level:'مقدماتی',free:true,price:0,desc:'صفر تا ساخت وب‌سایت واکنش‌گرا — کاملاً رایگان برای همه.',topics:['HTML5','CSS3','Flexbox','Grid','Responsive']},
+  {id:7,title:'Docker و Kubernetes',icon:'🐳',lang:'DevOps',cat:'devops',lessons:40,hours:13,rating:4.7,students:730,level:'پیشرفته',free:false,price:179000,desc:'containerization کامل — از dockerfile تا orchestration در کلاستر.',topics:['Docker','docker-compose','Kubernetes','Helm','CI/CD']},
+  {id:8,title:'Node.js و Express',icon:'🟢',lang:'Node.js',cat:'backend',lessons:44,hours:13,rating:4.7,students:1890,level:'متوسط',free:true,price:0,desc:'سرور REST API با Node.js — احراز هویت، دیتابیس، و دیپلوی.',topics:['Express','MongoDB','JWT','Socket.io','Deploy']},
+];
+
+let state = {
+  user: null,
+  enrolled: {},
+  progress: {},
+  currentCourse: null,
+  category: 'all',
+  priceFilter: 'all',
+  selectedPlan: 'free',
+};
+
+function showToast(msg, ok=false) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.borderColor = ok ? 'rgba(40,202,65,0.4)' : 'rgba(0,168,255,0.3)';
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 3000);
+}
+
+function goTo(page) {
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  updateNav();
+  if(page==='courses') renderCourses();
+  if(page==='dashboard') renderDashboard();
+}
+
+function updateNav() {
+  const nr = document.getElementById('nav-right');
+  if(state.user) {
+    const initials = state.user.name.split(' ').map(w=>w[0]).join('').slice(0,2);
+    nr.innerHTML = `<div class="user-chip"><div class="avatar">${initials}</div><span>${state.user.name}</span></div><button class="btn-outline-sm" onclick="doLogout()">خروج</button>`;
+  } else {
+    nr.innerHTML = `<button class="btn-outline-sm" onclick="goTo('login')">ورود</button><button class="btn-sm btn-primary-sm" onclick="goTo('register')">ثبت‌نام</button>`;
+  }
+}
+
+function selectPlan(p) {
+  state.selectedPlan = p;
+  document.getElementById('plan-free').classList.toggle('selected', p==='free');
+  document.getElementById('plan-pro').classList.toggle('selected', p==='pro');
+}
+
+function doLogin() {
+  const email = document.getElementById('login-email').value.trim();
+  const pass = document.getElementById('login-pass').value;
+  const al = document.getElementById('login-alert');
+  if(!email || !pass) { al.textContent='لطفاً همه فیلدها را پر کنید'; al.style.display='block'; return; }
+  if(!email.includes('@')) { al.textContent='ایمیل معتبر وارد کنید'; al.style.display='block'; return; }
+  if(pass.length < 6) { al.textContent='رمز عبور اشتباه است'; al.style.display='block'; return; }
+  al.style.display='none';
+  state.user = {name:'کاربر BlueCode', email, plan:'free'};
+  if(!state.enrolled['demo']) {
+    state.enrolled[1] = true; state.progress[1] = 3;
+    state.enrolled[6] = true; state.progress[6] = 28;
+  }
+  showToast('خوش اومدی! ✓', true);
+  goTo('courses');
+}
+
+function doOAuth(provider) {
+  state.user = {name: provider === 'Google' ? 'کاربر گوکل' : 'کاربر گیت هاب', email:`ali@${provider.toLowerCase()}.com`, plan:'free'};
+  state.enrolled[1] = true; state.progress[1] = 10;
+  showToast(`ورود با ${provider} موفق ✓`, true);
+  goTo('courses');
+}
+
+function doRegister() {
+  const fn = document.getElementById('reg-fname').value.trim();
+  const ln = document.getElementById('reg-lname').value.trim();
+  const email = document.getElementById('reg-email').value.trim();
+  const pass = document.getElementById('reg-pass').value;
+  const al = document.getElementById('reg-alert');
+  if(!fn||!ln||!email||!pass){al.textContent='لطفاً همه فیلدها را پر کنید';al.style.display='block';return;}
+  if(!email.includes('@')){al.textContent='ایمیل معتبر وارد کنید';al.style.display='block';return;}
+  if(pass.length<8){al.textContent='رمز عبور باید حداقل ۸ کاراکتر باشد';al.style.display='block';return;}
+  al.style.display='none';
+  state.user = {name:`${fn} ${ln}`, email, plan: state.selectedPlan};
+  showToast('حساب با موفقیت ساخته شد ✓', true);
+  goTo('courses');
+}
+
+function doLogout() {
+  state.user = null;
+  showToast('از حساب خارج شدید');
+  goTo('courses');
+}
+
+let activeCategory = 'all', activePriceFilter = 'all';
+
+function setCategory(el, cat) {
+  document.querySelectorAll('.filter-chip').forEach(c=>{
+    if(['all','frontend','backend','mobile','data','devops'].some(x=>c.textContent.includes(c.getAttribute('onclick')?.match(/'(\w+)'/)?.[1]||''))) {}
+  });
+  const allChips = document.querySelectorAll('.filter-chip');
+  allChips.forEach(c=>{
+    const m = c.getAttribute('onclick')?.match(/'(\w+)'/);
+    if(m&&['all','frontend','backend','mobile','data','devops'].includes(m[1])) c.classList.remove('active');
+  });
+  el.classList.add('active');
+  activeCategory = cat;
+  filterCourses();
+}
+
+function setPriceFilter(el, f) {
+  const allChips = document.querySelectorAll('.filter-chip');
+  allChips.forEach(c=>{
+    const m = c.getAttribute('onclick')?.match(/'(\w+)'/);
+    if(m&&['free','paid'].includes(m[1])) c.classList.remove('active');
+  });
+  if(activePriceFilter===f){activePriceFilter='all';}
+  else{el.classList.add('active');activePriceFilter=f;}
+  filterCourses();
+}
+
+function filterCourses() {
+  const q = document.getElementById('search-input').value.toLowerCase();
+  const sort = document.getElementById('sort-select').value;
+  let filtered = COURSES.filter(c => {
+    const matchQ = !q || c.title.toLowerCase().includes(q) || c.lang.toLowerCase().includes(q);
+    const matchCat = activeCategory==='all' || c.cat===activeCategory;
+    const matchPrice = activePriceFilter==='all' || (activePriceFilter==='free'&&c.free) || (activePriceFilter==='paid'&&!c.free);
+    return matchQ && matchCat && matchPrice;
+  });
+  if(sort==='rating') filtered.sort((a,b)=>b.rating-a.rating);
+  else if(sort==='newest') filtered.sort((a,b)=>b.id-a.id);
+  else if(sort==='free') filtered.sort((a,b)=>(a.free?0:1)-(b.free?0:1));
+  renderCoursesList(filtered);
+}
+
+function renderCourses() { filterCourses(); }
+
+function renderCoursesList(list) {
+  const container = document.getElementById('courses-container');
+  if(!list.length) {
+    container.innerHTML = `<div class="no-results" style="grid-column:1/-1"><i class="ti ti-search" style="font-size:40px;color:#2A4A66;display:block;margin-bottom:12px" aria-hidden="true"></i><p style="font-size:16px;margin-bottom:6px;color:#4D7A9E">نتیجه‌ای یافت نشد</p><p style="font-size:13px;color:#2A4A66">عبارت دیگری جستجو کنید</p></div>`;
+    return;
+  }
+  container.innerHTML = list.map(c=>`
+    <div class="course-card" onclick="openCourse(${c.id})">
+      <div class="course-thumb">
+        <span style="font-size:38px">${c.icon}</span>
+        <div class="course-badge-wrap">
+          <span class="badge-lang">${c.lang}</span>
+          ${c.free?'<span class="badge-free">رایگان</span>':'<span class="badge-paid">پولی</span>'}
+        </div>
+      </div>
+      <div class="course-body">
+        <div class="course-title">${c.title}</div>
+        <div class="course-meta">
+          <span><i class="ti ti-player-play" style="font-size:12px" aria-hidden="true"></i> ${c.lessons} جلسه</span>
+          <span><i class="ti ti-clock" style="font-size:12px" aria-hidden="true"></i> ${c.hours} ساعت</span>
+          <span><i class="ti ti-users" style="font-size:12px" aria-hidden="true"></i> ${c.students.toLocaleString()}</span>
+        </div>
+      </div>
+      <div class="course-footer">
+        <span class="level-badge">${c.level}</span>
+        <span>${c.free?'<span class="price-free">رایگان</span>':`<span class="price-tag">${c.price.toLocaleString()} ت</span>`} <span class="rating">★ ${c.rating}</span></span>
+      </div>
+    </div>
+  `).join('');
+}
+
+function openCourse(id) {
+  const c = COURSES.find(x=>x.id===id);
+  if(!c) return;
+  state.currentCourse = c;
+  const prog = state.progress[id] || 0;
+  const enrolled = !!state.enrolled[id];
+  const pct = Math.round((prog / c.lessons) * 100);
+  const canAccess = c.free || enrolled || (state.user && state.user.plan==='pro');
+
+  const lessons = Array.from({length: Math.min(c.lessons, 8)}, (_,i)=>({
+    n: i+1,
+    title: c.topics[i] || `جلسه ${i+1}`,
+    dur: `${8 + Math.round(Math.random()*12)} دقیقه`,
+    done: i < prog,
+    locked: !canAccess && i >= 2
+  }));
+
+  let enrollBtn = '';
+  if(enrolled || (state.user && state.user.plan==='pro')) {
+    if(prog >= c.lessons) {
+      enrollBtn = `<button class="enroll-btn enroll-enrolled" onclick="showCert(${c.id})">مشاهده مدرک 🏆</button>`;
+    } else {
+      enrollBtn = `<button class="enroll-btn enroll-enrolled">ادامه یادگیری ✓</button>`;
+    }
+  } else if(c.free) {
+    enrollBtn = `<button class="enroll-btn enroll-primary" onclick="enrollFree(${c.id})">ثبت‌نام رایگان</button>`;
+  } else {
+    if(!state.user) {
+      enrollBtn = `<button class="enroll-btn enroll-primary" onclick="goTo('login')">ورود برای خرید</button>`;
+    } else {
+      enrollBtn = `<button class="enroll-btn enroll-primary" onclick="buyNow(${c.id})">خرید دوره — ${c.price.toLocaleString()} ت</button>`;
+    }
+  }
+
+  document.getElementById('detail-content').innerHTML = `
+    <div class="detail-hero">
+      <div class="detail-hero-inner">
+        <div>
+          <div class="back-btn" onclick="goTo('courses')"><i class="ti ti-arrow-right" aria-hidden="true"></i> بازگشت به دوره‌ها</div>
+          <h1 class="detail-title">${c.title}</h1>
+          <p class="detail-desc">${c.desc}</p>
+          <div class="detail-meta">
+            <span><i class="ti ti-player-play" style="font-size:13px" aria-hidden="true"></i>${c.lessons} جلسه</span>
+            <span><i class="ti ti-clock" style="font-size:13px" aria-hidden="true"></i>${c.hours} ساعت</span>
+            <span><i class="ti ti-star" style="font-size:13px;color:#F0A500" aria-hidden="true"></i>${c.rating} امتیاز</span>
+            <span><i class="ti ti-users" style="font-size:13px" aria-hidden="true"></i>${c.students.toLocaleString()} دانشجو</span>
+            <span><i class="ti ti-certificate" style="font-size:13px" aria-hidden="true"></i>مدرک رسمی</span>
+          </div>
+        </div>
+        <div class="detail-sidebar">
+          ${c.free?'<div class="detail-price-free">رایگان</div>':'<div class="detail-price">'+(c.price.toLocaleString())+' ت</div>'}
+          <div class="detail-price-sub">${c.free?'دسترسی کامل بدون هزینه':'دسترسی مادام‌العمر'}</div>
+          ${enrollBtn}
+          <ul class="feature-list">
+            <li><i class="ti ti-video" style="font-size:14px;color:#4AE060" aria-hidden="true"></i>${c.hours} ساعت ویدیو</li>
+            <li><i class="ti ti-download" style="font-size:14px;color:#4AE060" aria-hidden="true"></i>فایل‌های تمرین</li>
+            <li><i class="ti ti-certificate" style="font-size:14px;color:#4AE060" aria-hidden="true"></i>مدرک قابل تأیید</li>
+            <li><i class="ti ti-infinity" style="font-size:14px;color:#4AE060" aria-hidden="true"></i>دسترسی همیشگی</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="detail-content">
+      ${enrolled||c.free?`<div class="progress-wrap"><div class="progress-label"><span>پیشرفت دوره</span><span>${pct}٪ — ${prog} از ${c.lessons} جلسه</span></div><div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div></div>`:''}
+      <h3 style="font-size:16px;font-weight:700;color:#fff;margin-bottom:14px">سرفصل دوره</h3>
+      <div class="syllabus">
+        ${lessons.map(l=>`
+          <div class="syllabus-item${l.done?' done':''}" onclick="${l.locked?`showLockMsg()`:`watchLesson(${c.id},${l.n})`}">
+            <span class="lesson-num">${String(l.n).padStart(2,'0')}</span>
+            <span class="lesson-title">${l.title}</span>
+            <span class="lesson-dur">${l.dur}</span>
+            ${l.done?'<i class="ti ti-check lesson-check" aria-hidden="true"></i>':l.locked?'<i class="ti ti-lock lesson-lock" aria-hidden="true"></i>':'<i class="ti ti-player-play" style="font-size:13px;color:#4D7A9E" aria-hidden="true"></i>'}
+          </div>
+        `).join('')}
+        ${c.lessons > 8 ? `<div class="syllabus-item" style="justify-content:center;color:#4D7A9E;font-size:13px">+ ${c.lessons - 8} جلسه دیگر</div>`:''}
+      </div>
+    </div>
+  `;
+  goTo('detail');
+}
+
+function showLockMsg() {
+  if(!state.user) { showToast('برای دسترسی ابتدا وارد شوید'); }
+  else { showToast('این جلسه نیاز به خرید دوره دارد'); }
+}
+
+function enrollFree(id) {
+  if(!state.user) { showToast('ابتدا وارد یا ثبت‌نام کنید'); goTo('login'); return; }
+  state.enrolled[id] = true;
+  if(!state.progress[id]) state.progress[id] = 0;
+  showToast('در دوره ثبت‌نام شدید ✓', true);
+  openCourse(id);
+}
+
+function buyNow(id) {
+  const c = COURSES.find(x=>x.id===id);
+  showToast(`در حال پردازش پرداخت ${c.price.toLocaleString()} تومان...`);
+  setTimeout(()=>{
+    state.enrolled[id]=true;
+    if(!state.progress[id]) state.progress[id]=0;
+    showToast('پرداخت موفق! دوره فعال شد ✓', true);
+    openCourse(id);
+  }, 1500);
+}
+
+function watchLesson(courseId, lessonNum) {
+  if(!state.user){showToast('ابتدا وارد شوید');return;}
+  if(!state.enrolled[courseId]){showToast('ابتدا در دوره ثبت‌نام کنید');return;}
+  if(lessonNum > (state.progress[courseId]||0)) {
+    state.progress[courseId] = lessonNum;
+  }
+  const c = COURSES.find(x=>x.id===courseId);
+  if(state.progress[courseId] >= c.lessons) {
+    showToast(`تبریک! دوره "${c.title}" رو تموم کردی 🏆`, true);
+    openCourse(courseId);
+  } else {
+    showToast(`جلسه ${lessonNum} تکمیل شد ✓`, true);
+    openCourse(courseId);
+  }
+}
+
+function showCert(id) {
+  const c = COURSES.find(x=>x.id===id);
+  const certId = 'BC-' + (id*1000+2024) + '-' + Math.floor(Math.random()*9000+1000);
+  const now = new Date();
+  const dateStr = now.toLocaleDateString('fa-IR');
+  document.getElementById('cert-content').innerHTML = `
+    <div class="cert-wrap">
+      <div class="cert-header">
+        <div class="cert-logo-row">
+          <div class="logo-icon">&lt;/&gt;</div>
+          <span class="logo-text" style="font-size:22px">BlueCode</span>
+        </div>
+        <span class="cert-badge">گواهینامه رسمی تکمیل دوره</span>
+        <div class="cert-stars">★ ★ ★ ★ ★</div>
+        <div class="cert-presents">این گواهینامه اهدا می‌شود به</div>
+        <div class="cert-recipient">${state.user ? state.user.name : 'کاربر'}</div>
+        <div class="cert-body">
+          برای تکمیل موفق دوره آموزشی
+        </div>
+        <div class="cert-course">${c.title}</div>
+        <div style="font-size:13px;color:#4D7A9E;margin-top:6px">${c.hours} ساعت آموزش • ${c.lessons} جلسه</div>
+      </div>
+      <div class="cert-divider"></div>
+      <div class="cert-footer">
+        <div class="cert-field">تاریخ صدور<span>${dateStr}</span></div>
+        <div class="cert-field">مدت دوره<span>${c.hours} ساعت</span></div>
+        <div class="cert-field">شناسه مدرک<span style="font-family:'JetBrains Mono',monospace;font-size:11px">${certId}</span></div>
+      </div>
+      <div class="cert-actions">
+        <button class="cert-btn cert-btn-primary" onclick="showToast('در حال دانلود PDF...', true)"><i class="ti ti-download" style="font-size:14px" aria-hidden="true"></i> دانلود PDF</button>
+        <button class="cert-btn cert-btn-outline" onclick="showToast('لینک اشتراک‌گذاری کپی شد', true)"><i class="ti ti-share" style="font-size:14px" aria-hidden="true"></i> اشتراک‌گذاری</button>
+        <button class="cert-btn cert-btn-outline" onclick="goTo('dashboard')">داشبورد من</button>
+      </div>
+      <div class="cert-id">قابل تأیید در: verify.bluecode.ir/${certId}</div>
+    </div>
+  `;
+  goTo('cert');
+}
+
+function renderDashboard() {
+  if(!state.user){document.getElementById('dashboard-content').innerHTML='<div style="padding:60px;text-align:center"><p style="color:#4D7A9E;font-size:15px">برای مشاهده داشبورد ابتدا وارد شوید</p><br><button class="btn-sm btn-primary-sm" onclick="goTo(\'login\')" style="padding:10px 24px">ورود</button></div>';return;}
+  const enrolledCourses = COURSES.filter(c=>state.enrolled[c.id]);
+  const doneCourses = enrolledCourses.filter(c=>state.progress[c.id]>=c.lessons);
+  const totalHours = enrolledCourses.reduce((a,c)=>{
+    const p = state.progress[c.id]||0;
+    return a + Math.round((p/c.lessons)*c.hours);
+  },0);
+  document.getElementById('dashboard-content').innerHTML = `
+    <div class="dash-inner">
+      <div class="dash-header">
+        <h2>سلام، ${state.user.name} 👋</h2>
+        <p>پیشرفت یادگیری خودت رو اینجا ببین</p>
+      </div>
+      <div class="dash-grid">
+        <div class="dash-stat"><div class="dash-stat-num">${enrolledCourses.length}</div><div class="dash-stat-label">دوره ثبت‌نام‌شده</div></div>
+        <div class="dash-stat"><div class="dash-stat-num">${doneCourses.length}</div><div class="dash-stat-label">دوره تکمیل‌شده</div></div>
+        <div class="dash-stat"><div class="dash-stat-num">${totalHours}</div><div class="dash-stat-label">ساعت یادگیری</div></div>
+      </div>
+      ${enrolledCourses.length ? `
+      <h3 style="font-size:15px;font-weight:700;color:#fff;margin-bottom:14px">دوره‌های من</h3>
+      <div class="enrolled-list">
+        ${enrolledCourses.map(c=>{
+          const p=state.progress[c.id]||0;
+          const pct=Math.round((p/c.lessons)*100);
+          const done=p>=c.lessons;
+          return `<div class="enrolled-item" onclick="${done?`showCert(${c.id})`:`openCourse(${c.id})`}">
+            <div class="enrolled-icon">${c.icon}</div>
+            <div class="enrolled-info">
+              <div class="enrolled-title">${c.title}</div>
+              <div class="enrolled-prog">${p} از ${c.lessons} جلسه — ${pct}٪</div>
+              <div class="enrolled-bar"><div class="enrolled-fill" style="width:${pct}%"></div></div>
+            </div>
+            <span class="${done?'enrolled-status status-done':'enrolled-status status-prog'}">${done?'مدرک ✓':'ادامه'}</span>
+          </div>`;
+        }).join('')}
+      </div>` : `<div style="text-align:center;padding:40px;color:#4D7A9E"><i class="ti ti-books" style="font-size:40px;display:block;margin-bottom:12px" aria-hidden="true"></i><p>هنوز در دوره‌ای ثبت‌نام نکرده‌اید</p><br><button class="btn-sm btn-primary-sm" onclick="goTo('courses')" style="padding:10px 22px">مشاهده دوره‌ها</button></div>`}
+    </div>
+  `;
+}
+
+goTo('courses');
+</script>
